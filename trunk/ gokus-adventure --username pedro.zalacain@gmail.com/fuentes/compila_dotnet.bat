@@ -1,3 +1,0 @@
-@echo Compilando...
-C:\Windows\Microsoft.NET\Framework\v3.5\csc juego.cs elemgrafico.cs imagen.cs fuente.cs hardware.cs sonido.cs presentacion.cs partida.cs creditos.cs personaje.cs  /r:Tao.Sdl.dll
-

@@ -1,7 +1,0 @@
-C:\Documents and Settings\Pedro\Escritorio\2ev\proyectoVS2008\obj\Debug\gokusadventure.exe
-C:\Documents and Settings\Pedro\Escritorio\2ev\proyectoVS2008\obj\Debug\gokusadventure.pdb
-C:\Documents and Settings\Pedro\Escritorio\Goku's Adventure\proyectoVS2008\obj\Debug\gokusadventure.exe
-C:\Documents and Settings\Pedro\Escritorio\Goku's Adventure\proyectoVS2008\obj\Debug\gokusadventure.pdb
-C:\Documents and Settings\Pedro\Escritorio\Goku's Adventure\proyectoVS2008\obj\Debug\ResolveAssemblyReference.cache
-C:\Documents and Settings\Pedro\Escritorio\Goku's Adventure\gokusadventure.exe
-C:\Documents and Settings\Pedro\Escritorio\Goku's Adventure\gokusadventure.pdb
