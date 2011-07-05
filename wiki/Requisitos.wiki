@@ -1,0 +1,15 @@
+#summary Análisis de requisitos
+
+= Análisis de requisitos =
+
+== Requisitos funcionales del juego ==
+
+  # El personaje se puede realizar las siguientes acciones (moverse a la derecha, moverse a la izquierda, saltar, agacharse, correr , caminar, lanzar poderes/combos)
+  # Scroll horizontal según se vea el tamaño que predefinamos.
+  # El personaje tendrá un array donde se definirán sus combos/poderes.
+  # Los mapas serán arrays predefinidos. 
+  # Enemigo final cada nivel para conseguir una bola de dragón. 
+  # Habrá 6 niveles cada uno con un nivel de dificultad mayor, y podrán tener subniveles.
+  # Se usaran combos/poderes para destruir obstáculos en el mapa.
+  # Se va ha hacer una rampa para Pedro de animación inicial.
+  # Habrán carteles de ayuda que cuando estas encima y pulsas una tecla aparece la ayuda en cuestión.
