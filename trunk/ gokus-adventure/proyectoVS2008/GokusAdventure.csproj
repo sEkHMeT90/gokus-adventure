@@ -79,6 +79,13 @@
     <Compile Include="..\fuentes\Personaje.cs" />
     <Compile Include="..\fuentes\Presentacion.cs" />
     <Compile Include="..\fuentes\Sonido.cs" />
+    <Compile Include="Ayuda.cs" />
+    <Compile Include="CargarGuardar.cs" />
+    <Compile Include="Enemigo.cs" />
+    <Compile Include="Mapa.cs" />
+    <Compile Include="Nivel.cs" />
+    <Compile Include="Plano.cs" />
+    <Compile Include="Poder.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="fuentes\" />

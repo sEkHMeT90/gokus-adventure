@@ -14,6 +14,9 @@
                       Version inicial: esqueleto, muestra el personaje,
                         permite moverlo a la derecha, izquierda, arriba,
                         abajo y (vacio) Disparar
+   0.02  05-Jul-2011  Andrés Marotta
+                      Agregados el atributo "miMapa" para enlazar con
+                        las clase "Mapa"
  ---------------------------------------------------- */
 
 
@@ -23,6 +26,7 @@ public class Partida
 
     // Componentes del juego
     private Personaje miPersonaje;
+    private Mapa miMapa;
     
     // Otros datos del juego
     int puntos;             // Puntuacion obtenida por el usuario
@@ -32,7 +36,8 @@ public class Partida
     // Inicialización al comenzar la sesión de juego
     public Partida()
     {
-        miPersonaje = new Personaje(this);        
+        miPersonaje = new Personaje(this);
+        miMapa = new Mapa();
         puntos = 0;
         partidaTerminada = false;        
     }

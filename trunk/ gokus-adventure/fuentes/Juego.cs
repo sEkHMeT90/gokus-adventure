@@ -14,6 +14,10 @@
                       Version inicial, que entra a modo gráfico
                         y lanza la presentación y permite entrar
                         a la partida.
+   0.02  05-Jul-2011  Andrés Marotta
+                      Agregados los atributos "plano" y "datos"
+                        para enlazar con las clases "Plano" y
+                        "CargarGuardar" respectivamente
  ---------------------------------------------------- */
 
 
@@ -23,6 +27,8 @@ public class Juego
     private Presentacion presentacion;
     private Partida partida;
     private Creditos creditos;
+    private Plano plano;
+    private CargarGuardar datos;
 
     
     // Inicialización al comenzar la sesión de juego
@@ -36,6 +42,8 @@ public class Juego
         presentacion = new Presentacion();
         partida = new Partida();
         creditos = new Creditos();
+        plano = new Plano();
+        datos = new CargarGuardar();
     }
     
     

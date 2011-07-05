@@ -14,6 +14,9 @@
                       Personaje inicial, con una imagen, capaz de
                         moverse a la derecha,izquierda, arriba, abajo
                          y (vacio) Disparar o Mover de forma automatica
+   0.02  05-Jul-2011  Andrés Marotta
+                      Agregados el atributo "miPoder" para enlazar con
+                        las clase "Poder"
  ---------------------------------------------------- */
 
 public class Personaje : ElemGrafico
@@ -22,12 +25,14 @@ public class Personaje : ElemGrafico
   // Datos del personaje
   Partida miPartida; // Para poder comunicar con la partida
                      // y preguntarle sobre enemigos, mapa, etc   
+  Poder miPoder;
   short vidas;  // Vidas restantes
     
   // Constructor
   public Personaje(Partida p)
   {
     miPartida = p;   // Para enlazar con el resto de componentes
+    miPoder = new Poder();
     x = 400;         // Resto de valores iniciales
     y = 300;
     vidas = 3;

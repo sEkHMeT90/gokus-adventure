@@ -5,3 +5,8 @@ C:\Documents and Settings\Pedro\Escritorio\Goku's Adventure\proyectoVS2008\obj\D
 C:\Documents and Settings\Pedro\Escritorio\Goku's Adventure\proyectoVS2008\obj\Debug\ResolveAssemblyReference.cache
 C:\Documents and Settings\Pedro\Escritorio\Goku's Adventure\gokusadventure.exe
 C:\Documents and Settings\Pedro\Escritorio\Goku's Adventure\gokusadventure.pdb
+D:\Andrés\Programación\Goku's Adventure\ gokus-adventure\proyectoVS2008\obj\Debug\gokusadventure.exe
+D:\Andrés\Programación\Goku's Adventure\ gokus-adventure\proyectoVS2008\obj\Debug\gokusadventure.pdb
+D:\Andrés\Programación\Goku's Adventure\ gokus-adventure\proyectoVS2008\obj\Debug\ResolveAssemblyReference.cache
+D:\Andrés\Programación\Goku's Adventure\ gokus-adventure\gokusadventure.exe
+D:\Andrés\Programación\Goku's Adventure\ gokus-adventure\gokusadventure.pdb
