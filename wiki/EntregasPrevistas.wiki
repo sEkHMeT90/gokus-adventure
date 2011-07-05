@@ -1,0 +1,27 @@
+#summary Entregas previstas
+
+= EntregasPrevistas =
+
+  # Crear la clase mapa con niveles (Manic Miner)
+  # Crear el nivel de prueba
+  # Movimientos del personaje
+  # Movimiento de un enemigo por el suelo.
+  # Movimiento de un enemigo por el aire.
+  # Créditos 
+  # Presentación
+  # Menú dinámico
+  # Crear nivel de ayuda
+  # Crear la clase y sus funciones de CargarGuardar.
+  # Crear un enemigo final.
+  # Crear carteles de ayuda.
+  # Crear scroll horizontal
+  # Salto del personaje
+  # Combos/Poderes del personaje.
+  # Marcador
+
+Pedro: 1, 12
+Raquel: 5, 6
+Aitor: 3, 16
+Toño: 11
+Toni: 4, 5
+Andrés: 7
