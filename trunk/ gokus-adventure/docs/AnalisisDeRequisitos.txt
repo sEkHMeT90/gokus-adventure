@@ -1,0 +1,10 @@
+Análisis de requisitos.
+1.	El personaje se puede realizar las siguientes acciones (moverse a la derecha, moverse a la izquierda, saltar, agacharse, correr , caminar, lanzar poderes/combos)
+2.	Scroll horizontal según se vea el tamaño que predefinamos.
+3.	El personaje tendrá un array donde se definirán sus combos/poderes.
+4.	Los mapas serán arrays predefinidos. 
+5.	Enemigo final cada nivel para conseguir una bola de dragón. 
+6.	Habrá 6 niveles cada uno con un nivel de dificultad mayor, y podrán tener subniveles.
+7.	Se usaran combos/poderes para destruir obstáculos en el mapa.
+8.	Se va a hacer una rampa para Pedro de animación inicial.
+9.	Habrá carteles de ayuda que cuando estas encima y pulsas una tecla aparece la ayuda en cuestión.

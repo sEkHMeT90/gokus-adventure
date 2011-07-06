@@ -1,0 +1,24 @@
+Entregas:
+1.	-  Crear la clase mapa con niveles (Manic Miner)
+2.	-  Crear el nivel de prueba
+3.	-  Movimientos del personaje
+4.	-  Movimiento de un enemigo por el suelo.
+5.	-  Movimiento de un enemigo por el aire.
+6.	-  Créditos 
+7.	-  Presentación
+8.	-  Menú dinámico
+9.	-  Crear nivel de ayuda
+10.	-  Crear la clase y sus funciones de CargarGuardar.
+11.	-  Crear un enemigo final.
+12.	-  Crear carteles de ayuda.
+13.	-  Crear scroll horizontal
+14.	-  Salto del personaje
+15.	-  Combos/Poderes del personaje.
+16.	- Marcador
+
+Pedro: 1, 12
+Raquel: 5, 6
+Aitor: 3, 16
+Toño: 11
+Toni: 4, 5
+Andrés: 7
