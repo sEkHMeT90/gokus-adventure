@@ -14,11 +14,11 @@ Entregas:
 13.	-  Crear scroll horizontal
 14.	-  Salto del personaje
 15.	-  Combos/Poderes del personaje.
-16.	- Marcador
+16.	-  Marcador
 
-Pedro: 1, 12
-Raquel: 5, 6
-Aitor: 3, 16
-Toño: 11
+Pedro: 1, 13
+Raquel: 6, 7
+Aitor: 3, 15
+Toño: 12
 Toni: 4, 5
-Andrés: 7
+Andrés: 8
