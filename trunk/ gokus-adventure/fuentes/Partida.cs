@@ -32,12 +32,17 @@ public class Partida
     int puntos;             // Puntuacion obtenida por el usuario
     bool partidaTerminada;  // Si ha terminado una partida
 
+    // Necesarias para el Scroll
+    int scrollHorizontal = 0;
+    int incrX = 4;
+    int DERECHA = -4;
+    int IZQUIERDA = 4;
 
     // Inicialización al comenzar la sesión de juego
     public Partida()
     {
         miPersonaje = new Personaje(this);
-        miMapa = new Mapa();
+        miMapa = new Mapa(this, miPersonaje);
         puntos = 0;
         partidaTerminada = false;
     }
@@ -47,10 +52,37 @@ public class Partida
     void comprobarTeclas()
     {
         // Muevo si se pulsa alguna flecha del teclado
-        if (Hardware.TeclaPulsada(Hardware.TECLA_DER))
-            miPersonaje.MoverDerecha();
         if (Hardware.TeclaPulsada(Hardware.TECLA_IZQ))
-            miPersonaje.MoverIzquierda();
+        {
+            if (miMapa.EsPosibleMover(miPersonaje.GetX() - incrX, miPersonaje.GetY(),
+            miPersonaje.GetAncho(), miPersonaje.GetAlto(), scrollHorizontal))
+            {
+                // Si la X del personaje es mayor a 350 se mueve solo el personaje
+                if (miPersonaje.GetX() > 350)
+                    miPersonaje.MoverIzquierda();
+                // Si no movemos el resto de elementos simulando Scroll
+                else
+                {
+                    MovimientoScroll(IZQUIERDA);
+                }
+            }
+        }
+
+        if (Hardware.TeclaPulsada(Hardware.TECLA_DER))
+        {
+            if (miMapa.EsPosibleMover(miPersonaje.GetX() + incrX, miPersonaje.GetY(),
+            miPersonaje.GetAncho(), miPersonaje.GetAlto(), scrollHorizontal))
+            {
+                // Si la X del personaje es mayor a 450 se mueve solo el personaje
+                if (miPersonaje.GetX() < 450)
+                    miPersonaje.MoverDerecha();
+                // Si no movemos el resto de elementos simulando Scroll
+                else
+                {
+                    MovimientoScroll(DERECHA);
+                }
+            }
+        }
 
         if (Hardware.TeclaPulsada(Hardware.TECLA_ARR))
             miPersonaje.MoverArriba();
@@ -94,6 +126,18 @@ public class Partida
         // Nada por ahora
     }
 
+    // --- Movimiento de todos los elementos al hacer uso del Scroll ---
+    void MovimientoScroll(int valor)
+    {
+        // Mapa
+        scrollHorizontal += valor;
+
+        /*
+        // Enemigos        
+        for (int i = 0; i < mapaActual.GetNumEnemigos(); i++)
+            mapaActual.GetEnemigo(i).MoverScroll(valor);
+        */
+    }
 
     // --- Comprobar colisiones de enemigo con personaje, etc ---
     void comprobarColisiones()
@@ -107,6 +151,9 @@ public class Partida
     {
         // Borro pantalla      
         Hardware.BorrarPantallaOculta(0, 0, 0);
+        
+        // Dibujo el mapa
+        miMapa.DibujarOculta(scrollHorizontal);
 
         // Dibujo el personaje
         miPersonaje.DibujarOculta();

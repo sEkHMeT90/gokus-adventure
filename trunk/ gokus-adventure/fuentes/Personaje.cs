@@ -91,5 +91,14 @@ public class Personaje : ElemGrafico
         vidas--;
     }
 
+    public int GetAncho()
+    {
+        return ancho;
+    }
+
+    public int GetAlto()
+    {
+        return alto;
+    }
 
 } /* fin de la clase Personaje */
