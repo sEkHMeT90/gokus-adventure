@@ -53,12 +53,13 @@ public class Juego
         do
         {
             presentacion.Ejecutar();
+
             switch (presentacion.GetOpcionEscogida())
             {
                 case Presentacion.OPC_CREDITOS:
                     creditos.Ejecutar();
                     break;
-                case Presentacion.OPC_PARTIDA:
+                case Presentacion.OPC_JUGAR:
                     partida.BuclePrincipal();
                     break;
             }

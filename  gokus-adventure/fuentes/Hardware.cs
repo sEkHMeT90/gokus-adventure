@@ -33,11 +33,10 @@ using Tao.Sdl;
                         parametros out
                       El comenzar en pantalla completa o no, es un parámetro
                         booleano de "inicializar"
-                        
-   En AstroAttack:
-   0.05 25-Mar-2010  Nacho Cabanes
+   0.25 25-Mar-2010   Nacho Cabanes
                       Añadido soporte de Joystick
- 
+   0.26 10-Jul-2011   Andrés Marotta
+                      Añadida la tecla "Intro" como constante.
  ---------------------------------------------------- */
 
 public class Hardware
@@ -322,6 +321,7 @@ public class Hardware
     // Definiciones de teclas
     public static int TECLA_ESC = Sdl.SDLK_ESCAPE;
     public static int TECLA_ESP = Sdl.SDLK_SPACE;
+    public static int TECLA_INTRO = Sdl.SDLK_RETURN;
     public static int TECLA_A = Sdl.SDLK_a;
     public static int TECLA_B = Sdl.SDLK_b;
     public static int TECLA_C = Sdl.SDLK_c;

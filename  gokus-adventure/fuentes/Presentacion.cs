@@ -13,63 +13,102 @@
    0.01  17-Dic-2010  Nacho Cabanes
                       Version inicial: muestra la pantalla de presentacion 
                         y permite entra a créditos o jugar una partida
+   0.02  10-Jul-2011  Andrés Marotta
+                      Cambiada la imagen de presentación, creado el menú
+                        dinámico con dos bolas de dragón que se muestran
+                        en la opción seleccionada
  ---------------------------------------------------- */
 
 public class Presentacion
 {
-    // Atributos    
-    private ElemGrafico imagen;
-    private Fuente fuenteSans18;
-    private int opcionEscogida;
+  // Atributos    
+  private ElemGrafico fondo;
+  private ElemGrafico bola;
+  private Fuente fuenteSans18;
+  private int opcionEscogida;
 
-    // Opciones posibles
-    public const byte OPC_PARTIDA = 0;
-    public const byte OPC_SALIR = 1;
-    public const byte OPC_CREDITOS = 2;
+  // Opciones posibles
+  public const byte OPC_JUGAR = 0;
+  public const byte OPC_CREDITOS = 1;
+  public const byte OPC_SALIR = 2;
 
 
-    /// Constructor
-    public Presentacion()  // Constructor
+  /// Constructor
+  public Presentacion()  // Constructor
+  {
+    fondo = new ElemGrafico( "imagenes/present.png" );
+    bola = new ElemGrafico( "imagenes/bolaMenu.png" );
+    fuenteSans18 = new Fuente("FreeSansBold.ttf", 24);
+    opcionEscogida = OPC_JUGAR;
+  }
+
+  /// Lanza la presentacion
+  public void Ejecutar()
+  {
+    // Hasta que se pulse INTRO (sin saturar la CPU)
+    do
     {
-        imagen = new ElemGrafico("imagenes/present.png");
-        fuenteSans18 = new Fuente("FreeSansBold.ttf", 18);
+      // Borro la pantalla
+      Hardware.BorrarPantallaOculta(0,0,0);
+
+      // Dibujo la imagen de la presentacion
+      fondo.DibujarOculta( 0, 0 );
+
+      // Escribo las opciones del menú, con sombra
+      Hardware.EscribirTextoOculta( "Jugar", 579, 49, 225, 225, 225, fuenteSans18 );
+      Hardware.EscribirTextoOculta( "Jugar", 580, 50, 255, 230, 0, fuenteSans18 );
+
+      Hardware.EscribirTextoOculta( "Créditos", 579, 119, 225, 225, 225, fuenteSans18 );
+      Hardware.EscribirTextoOculta( "Créditos", 580, 120, 255, 230, 0, fuenteSans18 );
+
+      Hardware.EscribirTextoOculta( "Salir", 579, 189, 225, 225, 225, fuenteSans18 );
+      Hardware.EscribirTextoOculta( "Salir", 580, 190, 255, 230, 0, fuenteSans18 );
+
+      // Dibujo las bolas que señalan la opción
+      if ( opcionEscogida == OPC_JUGAR )
+      {
+        bola.DibujarOculta( 545, 53 );
+        bola.DibujarOculta( 665, 53 );
+      }
+
+      if ( opcionEscogida == OPC_CREDITOS )
+      {
+        bola.DibujarOculta( 545, 123 );
+        bola.DibujarOculta( 700, 123 );
+      }
+
+      if ( opcionEscogida == OPC_SALIR )
+      {
+        bola.DibujarOculta( 545, 193 );
+        bola.DibujarOculta( 655, 193 );
+      }
+
+      // Finalmente, muestro en pantalla
+      Hardware.VisualizarOculta();
+
+      // Compruebo teclas para ver si se eligió una opción
+      // distinta de la actual
+      if ( Hardware.TeclaPulsada( Hardware.TECLA_ABA ) )
+      {
+        if ( opcionEscogida < OPC_SALIR )
+          opcionEscogida++;
+      }
+
+      if ( Hardware.TeclaPulsada( Hardware.TECLA_ARR ) )
+      {
+        if ( opcionEscogida > OPC_JUGAR )
+          opcionEscogida--;
+      }
+
+      // Pausa para no cargarme la "multitarea" de Windows
+      Hardware.Pausa(40);
     }
+    while ( !Hardware.TeclaPulsada(Hardware.TECLA_INTRO) );
+  }
 
-    /// Lanza la presentacion
-    public void Ejecutar()
-    {
-        // Dibujo la imagen de la presentacion
-        imagen.DibujarOculta(0, 0);
-
-        // Escribo avisos de las teclas utilizables
-        Hardware.EscribirTextoOculta(
-                "Pulsa Espacio para jugar",
-                300, 550, 0xAA, 0xAA, 0xAA, fuenteSans18);
-        Hardware.EscribirTextoOculta(
-                "S para salir, C para créditos",
-                290, 575, 0xAA, 0xAA, 0xAA, fuenteSans18);
-
-        // Finalmente, muestro en pantalla
-        Hardware.VisualizarOculta();
-
-        //hasta que se pulse espacio (sin saturar la CPU)
-        do
-        {
-            Hardware.Pausa(40);
-        } while ((!Hardware.TeclaPulsada(Hardware.TECLA_ESP))
-                 && (!Hardware.TeclaPulsada(Hardware.TECLA_S))
-                 && (!Hardware.TeclaPulsada(Hardware.TECLA_C)));
-
-        opcionEscogida = OPC_PARTIDA;
-        if (Hardware.TeclaPulsada(Hardware.TECLA_S))
-            opcionEscogida = OPC_SALIR;
-        if (Hardware.TeclaPulsada(Hardware.TECLA_C))
-            opcionEscogida = OPC_CREDITOS;
-    }
-
-    public int GetOpcionEscogida()
-    {
-        return opcionEscogida;
-    }
+  public int GetOpcionEscogida()
+  {
+    return opcionEscogida;
+  }
 
 } /* fin de la clase Presentacion */
