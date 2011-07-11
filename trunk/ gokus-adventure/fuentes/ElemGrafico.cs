@@ -22,6 +22,9 @@
                         colisiones con él y viceversa
                       Añadidas varias direcciones más (esquinas, 
                         APARECIENDO, MOVIENDO)
+   0.03   10-Jul-2011 Antonio Ramos
+                      Añadidas las funciones SetVelocidad,setMinMaxX, setMinMaxY y SetAnchoAlto
+                      para el movimiento del personaje automatico y para indicarle el ancho y alto, etc
 
  ---------------------------------------------------- */
 
@@ -38,6 +41,11 @@ public class ElemGrafico
     //protected bool activo;
     protected bool visible;
     protected bool chocable;
+
+    protected int minX, maxX, minY, maxY; //Automatizar movimiento enemigo
+
+    protected short incrXOriginal;
+    protected short incrYOriginal;
 
     protected short xOriginal;  // Para llevar a su posicion inicial
     protected short yOriginal;
@@ -106,11 +114,11 @@ public class ElemGrafico
     }
 
     /// Cambia la velocidad (incrX e incrY) de un elemento
-    public void SetVelocidad(int vX, int vY)
+    /*public void SetVelocidad(int vX, int vY)
     {
         incrX = (short)vX;
         incrY = (short)vY;
-    }
+    }*/
 
 
     /// Carga la imagen que representara a este elemento grafico
@@ -268,6 +276,28 @@ public class ElemGrafico
             centro2x - centro1x) * (180 / System.Math.PI));
     }
 
+    public void setMinMaxX(short minimo, short maximo)
+    {
+        minX = minimo;
+        maxX = maximo;
+    }
 
+    public void setMinMaxY(short minimo, short maximo)
+    {
+        minY = minimo;
+        maxY = maximo;
+    }
+
+    /// Cambia la velocidad (incrX e incrY) de un elemento
+    public void SetVelocidad(int vX, int vY)
+    {
+        incrX = (short)vX;
+        incrY = (short)vY;
+        if ((incrXOriginal == 0) && (incrYOriginal == 0))
+        {
+            incrXOriginal = (short)vX;
+            incrYOriginal = (short)vY;
+        }
+    }
 
 } /* end class ElemGrafico */
