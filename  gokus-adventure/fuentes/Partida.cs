@@ -23,6 +23,8 @@
                       Agregados atributos para los carteles de ayuda
                         (fuenteSans12, PartidaPausada, cartelAyuda, 
                         recuadroCartelAyuda)
+   0.04  12-Jul-2011  Varios
+                      Cambiado el color de fondo de negro a celeste.
  ---------------------------------------------------- */
 
 public class Partida
@@ -173,7 +175,7 @@ public class Partida
   void dibujarElementos()
   {
     // Borro pantalla      
-    Hardware.BorrarPantallaOculta( 0, 0, 0 );
+    Hardware.BorrarPantallaOculta( 135, 206, 235 );
 
     // Dibujo el mapa
     miMapa.DibujarOculta( scrollHorizontal );
