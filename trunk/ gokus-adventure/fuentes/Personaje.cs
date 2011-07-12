@@ -17,6 +17,8 @@
    0.02  05-Jul-2011  Andrés Marotta
                       Agregados el atributo "miPoder" para enlazar con
                         las clase "Poder"
+   0.03  12-Jul-2011  Varios
+                      Modificada la imagen del personaje: Ya es Goku.
  ---------------------------------------------------- */
 
 public class Personaje : ElemGrafico
@@ -36,7 +38,7 @@ public class Personaje : ElemGrafico
         x = 400;         // Resto de valores iniciales
         y = 300;
         vidas = 3;
-        CargarImagen("imagenes/personaje.png");
+        CargarImagen("imagenes/Goku/parado1.png");
     }
 
 
