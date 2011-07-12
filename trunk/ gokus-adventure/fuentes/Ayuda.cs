@@ -10,12 +10,33 @@
    ---------------------------------------------------
    0.01  05-Jul-2011  Andrés Marotta
                       Version inicial: Creada la clase "Ayuda".
-                      
+ 
+   0.02  11-Jul-2011  Antonio Pérez
+                      Crear constructor y metodos para los atributos.                      
  ---------------------------------------------------- */
 
 using System;
 
-class Ayuda
+class Ayuda : ElemGrafico
 {
-    // TODO
+  string texto;
+
+  public Ayuda( string textoAyuda, short NuevaX, short NuevaY )
+  {
+    texto = textoAyuda;
+    x = NuevaX;
+    y = NuevaY;
+    ancho = 32;
+    alto = 27;
+  }
+
+  public Ayuda GetAyuda()
+  {
+    return this;
+  }
+
+  public string GetTextoAyuda()
+  {
+    return texto;
+  }
 }
