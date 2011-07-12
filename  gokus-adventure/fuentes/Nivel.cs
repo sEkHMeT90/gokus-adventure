@@ -11,6 +11,9 @@
    0.01  09-Jul-2011  Pedro Zalacain
    					   Creada la clase
                        Enlazado con Mapa para AvanzarNivel
+   0.02  12-Jul-2011  Antonio Pérez
+                       Agregado el atributo "cartel" y el caso "C"
+                       en el switch que dibuja el fondo
  ---------------------------------------------------- */
 
 public class Nivel
@@ -25,7 +28,7 @@ public class Nivel
     protected Mapa mapaPertenece;
 
     // Imagenes para el fondo
-    ElemGrafico muroRojo, hierba;
+    ElemGrafico muroRojo, hierba, cartel;
 
     string[] datosNivel; // Datos en el momento de Juego
 
@@ -57,6 +60,7 @@ public class Nivel
         // Casillas repetitivas para el fondo
         muroRojo = new ElemGrafico("imagenes/Mapa/muroRojo.PNG");
         hierba = new ElemGrafico("imagenes/Mapa/hierba.PNG");
+        cartel = new ElemGrafico( "imagenes/Mapa/imagenCartel.PNG" );
         
         datosNivel = new string[altoMapa];
         Reiniciar();
@@ -80,6 +84,7 @@ public class Nivel
                 {
                     case 'R': muroRojo.DibujarOculta(posX + valor, posY); break;
                     case 'H': hierba.DibujarOculta(posX + valor, posY); break;
+                    case 'C': cartel.DibujarOculta( posX + valor, posY ); break;
                 }
             }
     }
