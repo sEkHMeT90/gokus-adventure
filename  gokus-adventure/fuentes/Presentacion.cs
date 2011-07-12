@@ -17,15 +17,22 @@
                       Cambiada la imagen de presentación, creado el menú
                         dinámico con dos bolas de dragón que se muestran
                         en la opción seleccionada
+   0.03  11-Jul-2011 Raquel Lloréns
+                      Añadida imagen inicial de presentación y texto con
+                        el nombre del juego (TODO: Falta de de animación 
+                        en el nombre del juego por no tener el personaje).
  ---------------------------------------------------- */
 
-public class Presentacion
+public class Presentacion : ElemGrafico
 {
   // Atributos    
   private ElemGrafico fondo;
   private ElemGrafico bola;
+  private ElemGrafico presentInicio;
   private Fuente fuenteSans18;
+  private Fuente fuentedball88;
   private int opcionEscogida;
+  private int xPresent;
 
   // Opciones posibles
   public const byte OPC_JUGAR = 0;
@@ -36,15 +43,43 @@ public class Presentacion
   /// Constructor
   public Presentacion()  // Constructor
   {
-    fondo = new ElemGrafico( "imagenes/present.png" );
-    bola = new ElemGrafico( "imagenes/bolaMenu.png" );
+    fondo = new ElemGrafico( "imagenes/Present/present.png" );
+    bola = new ElemGrafico( "imagenes/Present/bolaMenu.png" );
+    presentInicio = new ElemGrafico("imagenes/Present/presentInicio.png");
     fuenteSans18 = new Fuente("FreeSansBold.ttf", 24);
+    fuentedball88 = new Fuente("Saiyan-Sans.ttf", 88);
     opcionEscogida = OPC_JUGAR;
+
+    
   }
 
   /// Lanza la presentacion
   public void Ejecutar()
   {
+    xPresent = 800;
+
+    while (xPresent > 10)
+    {
+        // Borro la pantalla
+        Hardware.BorrarPantallaOculta(135, 206, 235);
+        presentInicio.DibujarOculta(xPresent, 10);
+        Hardware.VisualizarOculta();
+        xPresent -= 20;
+    }
+    
+    /* TODO: Animación en el nombre del juego con el personaje */
+
+    Hardware.EscribirTextoOculta(
+        "GOKU'S ADVENTURE", 101, 480,
+          255, 255, 0, fuentedball88);
+    Hardware.EscribirTextoOculta(
+        "GOKU'S ADVENTURE", 100, 479,
+          255, 140, 0, fuentedball88);
+
+    Hardware.VisualizarOculta();
+
+    Hardware.Pausa(1000);
+
     // Hasta que se pulse INTRO (sin saturar la CPU)
     do
     {
