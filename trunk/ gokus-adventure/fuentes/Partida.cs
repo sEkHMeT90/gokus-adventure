@@ -25,6 +25,9 @@
                         recuadroCartelAyuda)
    0.04  12-Jul-2011  Varios
                       Cambiado el color de fondo de negro a celeste.
+   0.05  13-Jul-2011  Andrés Marotta
+                      Agregada la comprobación cuando no se toca ninguna
+                        tecla.
  ---------------------------------------------------- */
 
 public class Partida
@@ -140,12 +143,20 @@ public class Partida
     // Si se pulsa ESC, por ahora termina la partida... y el juego
     if ( Hardware.TeclaPulsada( Hardware.TECLA_ESC ) )
       partidaTerminada = true;
+
+    // Si no se pulsa ninguna tecla
+    if ( ( !Hardware.TeclaPulsada( Hardware.TECLA_DER ) ) && ( !Hardware.TeclaPulsada( Hardware.TECLA_IZQ ) ) &&
+         ( !Hardware.TeclaPulsada( Hardware.TECLA_ARR ) ) && ( !Hardware.TeclaPulsada( Hardware.TECLA_ABA ) ) &&
+         ( !Hardware.TeclaPulsada( Hardware.TECLA_ESP ) ) && ( !Hardware.TeclaPulsada( Hardware.TECLA_C ) ) &&
+         ( !Hardware.TeclaPulsada( Hardware.TECLA_V ) ) && ( !Hardware.TeclaPulsada( Hardware.TECLA_ESC ) ) )
+    {
+      miPersonaje.Esperar();
+    }
   }
 
   // --- Animación de los enemigos y demás objetos "que se muevan solos" -----
   void moverElementos()
   {
-    // Nada por ahora
   }
 
   // --- Movimiento de todos los elementos al hacer uso del Scroll ---
