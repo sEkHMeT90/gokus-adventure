@@ -22,9 +22,14 @@
                         colisiones con él y viceversa
                       Añadidas varias direcciones más (esquinas, 
                         APARECIENDO, MOVIENDO)
-   0.03   10-Jul-2011 Antonio Ramos
+   0.03  10-Jul-2011  Antonio Ramos
                       Añadidas las funciones SetVelocidad,setMinMaxX, setMinMaxY y SetAnchoAlto
                       para el movimiento del personaje automatico y para indicarle el ancho y alto, etc
+   0.04  13-Jul-2011  Andrés Marotta
+                      Agregado el atributo "ESPERANDO" para la secuencia en la que el personaje no se mueve.
+                      Aumentada en uno la cantidad posible de direcciones.
+                      Modificados los valores de los atributos "alto" y "ancho" del personaje. Los valores
+                      por defecto son 45x45.
 
  ---------------------------------------------------- */
 
@@ -68,6 +73,7 @@ public class ElemGrafico
     public const byte ARRIBAI = 7;
     public const byte APARECIENDO = 8;
     public const byte MURIENDO = 9;
+    public const byte ESPERANDO = 10;
 
     bool contieneImagen;        // Si no contiene imagen, no se podra dibujar
     bool contieneSecuencia;     // La alternativa: imagenes multiples
@@ -84,7 +90,7 @@ public class ElemGrafico
         chocable = true;
         direccion = ABAJO;
         fotogramaActual = 0;
-        secuencia = new Imagen[10][];
+        secuencia = new Imagen[11][];
     }
 
     /// Constructor: Carga la imagen que representara a este elemento grafico
@@ -97,8 +103,8 @@ public class ElemGrafico
         chocable = true;
         fotogramaActual = 0;
         // Valores por defecto para ancho y alto
-        ancho = 32;
-        alto = 32;
+        ancho = 45;
+        alto = 45;
     }
 
     /// Mueve el elemento grafico a otra posicion

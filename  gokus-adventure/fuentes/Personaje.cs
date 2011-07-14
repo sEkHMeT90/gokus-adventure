@@ -19,6 +19,12 @@
                         las clase "Poder"
    0.03  12-Jul-2011  Varios
                       Modificada la imagen del personaje: Ya es Goku.
+   0.04  14-Jul-2011  Andrés Marotta
+                      Agregadas las secuencias de imágenes para los
+                        movimientos hacia derecha e izquierda.
+                      Modificadas las funciones "MoverDerecha" y
+                        "MoverIzquierda" para utilizar la secuencia
+                        de imágenes correspondiente a cada una.
  ---------------------------------------------------- */
 
 public class Personaje : ElemGrafico
@@ -33,24 +39,60 @@ public class Personaje : ElemGrafico
     // Constructor
     public Personaje(Partida p)
     {
-        miPartida = p;   // Para enlazar con el resto de componentes
-        miPoder = new Poder();
-        x = 400;         // Resto de valores iniciales
-        y = 300;
-        vidas = 3;
-        CargarImagen("imagenes/Goku/parado1.png");
+      miPartida = p;   // Para enlazar con el resto de componentes
+      miPoder = new Poder();
+      x = 500;         // Resto de valores iniciales
+      y = 300;
+      vidas = 3;
+
+      CargarSecuencia( DERECHA,
+                       new string[] { "imagenes/Goku/caminandoD1.png", "imagenes/Goku/caminandoD1.png",
+                                      "imagenes/Goku/caminandoD2.png", "imagenes/Goku/caminandoD2.png",
+                                      "imagenes/Goku/caminandoD3.png", "imagenes/Goku/caminandoD3.png",
+                                      "imagenes/Goku/caminandoD4.png", "imagenes/Goku/caminandoD4.png",
+                                      "imagenes/Goku/caminandoD5.png", "imagenes/Goku/caminandoD5.png",
+                                      "imagenes/Goku/caminandoD6.png", "imagenes/Goku/caminandoD6.png",
+                                      "imagenes/Goku/caminandoD7.png", "imagenes/Goku/caminandoD7.png",
+                                      "imagenes/Goku/caminandoD8.png", "imagenes/Goku/caminandoD8.png"} );
+      direccion = DERECHA;
+
+      CargarSecuencia( IZQUIERDA,
+                       new string[] { "imagenes/Goku/caminandoI1.png", "imagenes/Goku/caminandoI1.png",
+                                      "imagenes/Goku/caminandoI2.png", "imagenes/Goku/caminandoI2.png",
+                                      "imagenes/Goku/caminandoI3.png", "imagenes/Goku/caminandoI3.png",
+                                      "imagenes/Goku/caminandoI4.png", "imagenes/Goku/caminandoI4.png",
+                                      "imagenes/Goku/caminandoI5.png", "imagenes/Goku/caminandoI5.png",
+                                      "imagenes/Goku/caminandoI6.png", "imagenes/Goku/caminandoI6.png",
+                                      "imagenes/Goku/caminandoI7.png", "imagenes/Goku/caminandoI7.png",
+                                      "imagenes/Goku/caminandoI8.png", "imagenes/Goku/caminandoI8.png"} );
+      direccion = IZQUIERDA;
+
+      CargarSecuencia( ESPERANDO,
+                       new string[] { "imagenes/Goku/parado1.png", "imagenes/Goku/parado1.png",
+                                      "imagenes/Goku/parado2.png", "imagenes/Goku/parado2.png",
+                                      "imagenes/Goku/parado3.png", "imagenes/Goku/parado3.png",
+                                      "imagenes/Goku/parado4.png", "imagenes/Goku/parado4.png",
+                                      "imagenes/Goku/parado5.png", "imagenes/Goku/parado5.png",
+                                      "imagenes/Goku/parado6.png", "imagenes/Goku/parado6.png" } );
+      direccion = ESPERANDO;
+
+      SetAnchoAlto( 45, 45 );
     }
 
 
     // Métodos de movimiento
     public void MoverDerecha()
     {
-        x += 4;
+      direccion = DERECHA;
+      x += 4;
+      SiguienteFotograma();
     }
 
     public void MoverIzquierda()
     {
-        x -= 4;
+      direccion = IZQUIERDA;
+      x -= 4;
+      SiguienteFotograma();
     }
 
     public void MoverArriba()
@@ -63,11 +105,16 @@ public class Personaje : ElemGrafico
         y += 4;
     }
 
+    public void Esperar()
+    {
+      direccion = ESPERANDO;
+      SiguienteFotograma();
+    }
+
     // Para cuando deba moverse solo, p.ej. saltando, o en
     // movimiento continuo, como el PacMan
     public new void Mover()
     {
-        // TODO: Vacio por ahora
     }
 
 
