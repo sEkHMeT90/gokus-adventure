@@ -28,6 +28,9 @@
    0.05  13-Jul-2011  Andrés Marotta
                       Agregada la comprobación cuando no se toca ninguna
                         tecla.
+   0.06  14-Jul-2011  Antonio Ramos
+                      Modificada la funcion scroll para que cuando el personaje
+                        llege al limite del scroll se mueva y no siga parado.
  ---------------------------------------------------- */
 
 public class Partida
@@ -164,6 +167,10 @@ public class Partida
   {
     // Mapa
     scrollHorizontal += valor;
+      if ( valor == 4)
+        miPersonaje.MoverSiguienteFotograma(DERECHA);
+      else
+        miPersonaje.MoverSiguienteFotograma(IZQUIERDA);
 
     /*
     // Enemigos        

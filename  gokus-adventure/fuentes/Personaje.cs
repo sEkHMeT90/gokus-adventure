@@ -25,6 +25,10 @@
                       Modificadas las funciones "MoverDerecha" y
                         "MoverIzquierda" para utilizar la secuencia
                         de imágenes correspondiente a cada una.
+   0.05 14-Jul-2011   Antonio Ramos
+                       Añadida la funcion MoverSiguienteFotograma para
+                       que se mueva el personaje cuando llegue al
+                       limite del scroll
  ---------------------------------------------------- */
 
 public class Personaje : ElemGrafico
@@ -109,6 +113,17 @@ public class Personaje : ElemGrafico
     {
       direccion = ESPERANDO;
       SiguienteFotograma();
+    }
+
+
+    public void MoverSiguienteFotograma(int valor)
+    {
+        if (valor == 4)
+            direccion = DERECHA;
+        else
+            direccion = IZQUIERDA;
+
+        SiguienteFotograma();
     }
 
     // Para cuando deba moverse solo, p.ej. saltando, o en
