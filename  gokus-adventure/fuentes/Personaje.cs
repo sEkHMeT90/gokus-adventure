@@ -77,7 +77,8 @@ public class Personaje : ElemGrafico
                                       "imagenes/Goku/parado3.png", "imagenes/Goku/parado3.png",
                                       "imagenes/Goku/parado4.png", "imagenes/Goku/parado4.png",
                                       "imagenes/Goku/parado5.png", "imagenes/Goku/parado5.png",
-                                      "imagenes/Goku/parado6.png", "imagenes/Goku/parado6.png" } );
+                                      "imagenes/Goku/parado6.png", "imagenes/Goku/parado6.png"} );
+
       direccion = ESPERANDO;
 
       SetAnchoAlto( 45, 45 );

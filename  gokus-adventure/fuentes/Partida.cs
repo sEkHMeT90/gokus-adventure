@@ -40,6 +40,7 @@ public class Partida
 
   // Componentes del juego
   private Personaje miPersonaje;
+  private Enemigo miEnemigo;
   private Mapa miMapa;
 
   // Otros datos del juego
@@ -63,6 +64,13 @@ public class Partida
   public Partida()
   {
     miPersonaje = new Personaje( this );
+    miEnemigo = new Enemigo();
+    //Enemigo
+    miEnemigo.MoverA(400, 360);         
+    miEnemigo.SetVelocidad(2, 0);       
+    miEnemigo.setMinMaxX(100, 700);     
+    miEnemigo.SetAnchoAlto(25, 25);   
+  
     miMapa = new Mapa( this, miPersonaje );
     puntos = 0;
     partidaTerminada = false;
@@ -160,6 +168,7 @@ public class Partida
   // --- Animación de los enemigos y demás objetos "que se muevan solos" -----
   void moverElementos()
   {
+      miEnemigo.Mover();
   }
 
   // --- Movimiento de todos los elementos al hacer uso del Scroll ---
@@ -200,6 +209,9 @@ public class Partida
 
     // Dibujo el personaje
     miPersonaje.DibujarOculta();
+
+    //Dibujo el enemigo
+    miEnemigo.DibujarOculta();
 
     if ( partidaPausada )
     {
