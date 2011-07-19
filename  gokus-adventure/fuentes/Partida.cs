@@ -41,7 +41,7 @@ public class Partida
   // Componentes del juego
   private Personaje miPersonaje;
   private Enemigo miEnemigo;
-  private Mapa miMapa;
+  public Mapa miMapa;
 
   // Otros datos del juego
   int puntos;             // Puntuacion obtenida por el usuario
