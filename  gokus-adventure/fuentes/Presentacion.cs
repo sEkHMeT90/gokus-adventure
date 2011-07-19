@@ -26,6 +26,8 @@
                       Añadida animación del personaje.
    0.05  18-Jul-2011  Raquel Lloréns
                       Añadido acceso directo en el menú al nivel de ayuda.
+   0.06  19-Jul-2011  Raquel Lloréns
+                      Modificado texto del menú.
  ---------------------------------------------------- */
 
 public class Presentacion : ElemGrafico
@@ -33,7 +35,7 @@ public class Presentacion : ElemGrafico
   // Atributos    
   private ElemGrafico fondo;
   private ElemGrafico bola;
-  private Fuente fuenteSans18;
+  private Fuente fuentedball42;
   private Fuente fuentedball88;
   private int opcionEscogida;
   //private int xPresent;
@@ -56,7 +58,7 @@ public class Presentacion : ElemGrafico
 
     fondo = new ElemGrafico( "imagenes/Present/imgPresent.png" );
     bola = new ElemGrafico( "imagenes/Present/bolaMenu.png" );
-    fuenteSans18 = new Fuente("FreeSansBold.ttf", 24);
+    fuentedball42 = new Fuente( "Saiyan-Sans.ttf", 42 );
     fuentedball88 = new Fuente("Saiyan-Sans.ttf", 88);
     opcionEscogida = OPC_JUGAR;
   }
@@ -106,17 +108,17 @@ public class Presentacion : ElemGrafico
       fondo.DibujarOculta( 0, 0 );
 
       // Escribo las opciones del menú, con sombra
-      Hardware.EscribirTextoOculta( "Jugar", 529, 184, 225, 225, 225, fuenteSans18 );
-      Hardware.EscribirTextoOculta( "Jugar", 530, 185, 255, 230, 0, fuenteSans18 );
+      Hardware.EscribirTextoOculta( "Jugar", 520, 184, 0xFF, 0x99, 0x00, fuentedball42 );
+      Hardware.EscribirTextoOculta( "Jugar", 519, 185, 255, 230, 0, fuentedball42 );
 
-      Hardware.EscribirTextoOculta( "Nivel de ayuda", 529, 254, 225, 225, 225, fuenteSans18 );
-      Hardware.EscribirTextoOculta( "Nivel de ayuda", 530, 255, 255, 230, 0, fuenteSans18 );
+      Hardware.EscribirTextoOculta( "Nivel de ayuda", 520, 254, 0xFF, 0x99, 0x00, fuentedball42 );
+      Hardware.EscribirTextoOculta( "Nivel de ayuda", 519, 255, 255, 230, 0, fuentedball42 );
 
-      Hardware.EscribirTextoOculta( "Créditos", 529, 324, 235, 225, 225, fuenteSans18  );
-      Hardware.EscribirTextoOculta( "Créditos", 530, 325, 255, 230, 0, fuenteSans18 );
+      Hardware.EscribirTextoOculta( "Creditos", 520, 324, 0xFF, 0x99, 0x00, fuentedball42 );
+      Hardware.EscribirTextoOculta( "Creditos", 519, 325, 255, 230, 0, fuentedball42 );
 
-      Hardware.EscribirTextoOculta( "Salir", 529, 394, 225, 225, 225, fuenteSans18 );
-      Hardware.EscribirTextoOculta( "Salir", 530, 395, 255, 230, 0, fuenteSans18 );
+      Hardware.EscribirTextoOculta( "Salir", 520, 394, 0xFF, 0x99, 0x00, fuentedball42 );
+      Hardware.EscribirTextoOculta( "Salir", 519, 395, 255, 230, 0, fuentedball42 );
 
       // Muestro la secuencia del personaje
       miPersonaje.GirarPalo();
@@ -126,26 +128,26 @@ public class Presentacion : ElemGrafico
       // Dibujo las bolas que señalan la opción
       if ( opcionEscogida == OPC_JUGAR )
       {
-        bola.DibujarOculta( 495, 188 );
+        bola.DibujarOculta( 485, 188 );
         bola.DibujarOculta( 615, 188 );
       }
 
       if ( opcionEscogida == OPC_NIVELAYUDA )
       {
-         bola.DibujarOculta( 495, 248 );
-         bola.DibujarOculta( 730, 248 );
+         bola.DibujarOculta( 485, 260 );
+         bola.DibujarOculta( 745, 260 );
       }
 
       if ( opcionEscogida == OPC_CREDITOS )
       {
-         bola.DibujarOculta( 495, 328 );
-         bola.DibujarOculta( 650, 328 );
+         bola.DibujarOculta( 485, 328 );
+         bola.DibujarOculta( 640, 328 );
       }
 
       if ( opcionEscogida == OPC_SALIR )
       {
-        bola.DibujarOculta( 495, 398 );
-        bola.DibujarOculta( 605, 398 );
+        bola.DibujarOculta( 485, 398 );
+        bola.DibujarOculta( 600, 398 );
       }
 
       // Finalmente, muestro en pantalla
