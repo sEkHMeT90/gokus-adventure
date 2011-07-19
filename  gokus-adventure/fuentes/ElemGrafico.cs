@@ -74,6 +74,7 @@ public class ElemGrafico
     public const byte APARECIENDO = 8;
     public const byte MURIENDO = 9;
     public const byte ESPERANDO = 10;
+    public const byte GIRANDOPALO = 11;
 
     bool contieneImagen;        // Si no contiene imagen, no se podra dibujar
     bool contieneSecuencia;     // La alternativa: imagenes multiples
@@ -90,7 +91,7 @@ public class ElemGrafico
         chocable = true;
         direccion = ABAJO;
         fotogramaActual = 0;
-        secuencia = new Imagen[11][];
+        secuencia = new Imagen[12][];
     }
 
     /// Constructor: Carga la imagen que representara a este elemento grafico
