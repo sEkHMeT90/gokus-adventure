@@ -18,6 +18,8 @@
                       Agregados los atributos "plano" y "datos"
                         para enlazar con las clases "Plano" y
                         "CargarGuardar" respectivamente
+    0.03  18-Jul-2011  Raquel Lloréns
+                       Añadida la opción "OPC_NIVELAYUDA"
  ---------------------------------------------------- */
 
 
@@ -34,45 +36,50 @@ public class Juego
     // Inicialización al comenzar la sesión de juego
     public Juego()
     {
-        // Inicializo modo grafico 800x600 puntos, 24 bits de color
-        bool pantallaCompleta = false;
-        Hardware.Inicializar(800, 600, 24, pantallaCompleta);
+      // Inicializo modo grafico 800x600 puntos, 24 bits de color
+      bool pantallaCompleta = false;
+      Hardware.Inicializar(800, 600, 24, pantallaCompleta);
 
-        // Inicializo componentes del juego
-        presentacion = new Presentacion();
-        partida = new Partida();
-        creditos = new Creditos();
-        plano = new Plano();
-        datos = new CargarGuardar();
+      // Inicializo componentes del juego
+      presentacion = new Presentacion();
+      partida = new Partida();
+      creditos = new Creditos();
+      plano = new Plano();
+      datos = new CargarGuardar();
     }
 
 
     // --- Comienzo de un nueva partida: reiniciar variables ---
     public void Ejecutar()
     {
-        do
-        {
-            presentacion.Ejecutar();
+      do
+      {
+        presentacion.Ejecutar();
 
-            switch (presentacion.GetOpcionEscogida())
-            {
-                case Presentacion.OPC_CREDITOS:
-                    creditos.Ejecutar();
-                    break;
-                case Presentacion.OPC_JUGAR:
-                    partida.BuclePrincipal();
-                    break;
-            }
+        switch (presentacion.GetOpcionEscogida())
+        {
+          case Presentacion.OPC_CREDITOS:
+            creditos.Ejecutar();
+            break;
+          case Presentacion.OPC_JUGAR:
+            partida.miMapa.SetNivel(1);
+            partida.BuclePrincipal();
+            break;
+          case Presentacion.OPC_NIVELAYUDA:
+            partida.miMapa.SetNivel(0);
+            partida.BuclePrincipal();
+            break;
         }
-        while (presentacion.GetOpcionEscogida() != Presentacion.OPC_SALIR);
+      }
+      while (presentacion.GetOpcionEscogida() != Presentacion.OPC_SALIR);
     }
 
 
     // --- Cuerpo del programa -----
     public static void Main()
     {
-        Juego juego = new Juego();
-        juego.Ejecutar();
+      Juego juego = new Juego();
+      juego.Ejecutar();
     }
 
 } /* fin de la clase Juego */
