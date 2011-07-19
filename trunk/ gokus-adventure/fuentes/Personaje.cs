@@ -34,136 +34,166 @@
 public class Personaje : ElemGrafico
 {
 
-    // Datos del personaje
-    Partida miPartida; // Para poder comunicar con la partida
-    // y preguntarle sobre enemigos, mapa, etc   
-    Poder miPoder;
-    short vidas;  // Vidas restantes
+  // Datos del personaje
+  Partida miPartida; // Para poder comunicar con la partida
+  // y preguntarle sobre enemigos, mapa, etc   
+  Poder miPoder;
+  short vidas;  // Vidas restantes
 
-    // Constructor
-    public Personaje(Partida p)
-    {
-      miPartida = p;   // Para enlazar con el resto de componentes
-      miPoder = new Poder();
-      x = 500;         // Resto de valores iniciales
-      y = 300;
-      vidas = 3;
+  // Constructor
 
-      CargarSecuencia( DERECHA,
-                       new string[] { "imagenes/Goku/caminandoD1.png", "imagenes/Goku/caminandoD1.png",
-                                      "imagenes/Goku/caminandoD2.png", "imagenes/Goku/caminandoD2.png",
-                                      "imagenes/Goku/caminandoD3.png", "imagenes/Goku/caminandoD3.png",
-                                      "imagenes/Goku/caminandoD4.png", "imagenes/Goku/caminandoD4.png",
-                                      "imagenes/Goku/caminandoD5.png", "imagenes/Goku/caminandoD5.png",
-                                      "imagenes/Goku/caminandoD6.png", "imagenes/Goku/caminandoD6.png",
-                                      "imagenes/Goku/caminandoD7.png", "imagenes/Goku/caminandoD7.png",
-                                      "imagenes/Goku/caminandoD8.png", "imagenes/Goku/caminandoD8.png"} );
-      direccion = DERECHA;
+  public Personaje(Partida p)
+  {
+    miPartida = p;   // Para enlazar con el resto de componentes
+    miPoder = new Poder();
+    x = 500;         // Resto de valores iniciales
+    y = 300;
+    vidas = 3;
 
-      CargarSecuencia( IZQUIERDA,
-                       new string[] { "imagenes/Goku/caminandoI1.png", "imagenes/Goku/caminandoI1.png",
-                                      "imagenes/Goku/caminandoI2.png", "imagenes/Goku/caminandoI2.png",
-                                      "imagenes/Goku/caminandoI3.png", "imagenes/Goku/caminandoI3.png",
-                                      "imagenes/Goku/caminandoI4.png", "imagenes/Goku/caminandoI4.png",
-                                      "imagenes/Goku/caminandoI5.png", "imagenes/Goku/caminandoI5.png",
-                                      "imagenes/Goku/caminandoI6.png", "imagenes/Goku/caminandoI6.png",
-                                      "imagenes/Goku/caminandoI7.png", "imagenes/Goku/caminandoI7.png",
-                                      "imagenes/Goku/caminandoI8.png", "imagenes/Goku/caminandoI8.png"} );
-      direccion = IZQUIERDA;
+    CargarSecuencia( DERECHA,
+                      new string[] { "imagenes/Goku/caminandoD1.png", "imagenes/Goku/caminandoD1.png",
+                                    "imagenes/Goku/caminandoD2.png", "imagenes/Goku/caminandoD2.png",
+                                    "imagenes/Goku/caminandoD3.png", "imagenes/Goku/caminandoD3.png",
+                                    "imagenes/Goku/caminandoD4.png", "imagenes/Goku/caminandoD4.png",
+                                    "imagenes/Goku/caminandoD5.png", "imagenes/Goku/caminandoD5.png",
+                                    "imagenes/Goku/caminandoD6.png", "imagenes/Goku/caminandoD6.png",
+                                    "imagenes/Goku/caminandoD7.png", "imagenes/Goku/caminandoD7.png",
+                                    "imagenes/Goku/caminandoD8.png", "imagenes/Goku/caminandoD8.png"} );
+    direccion = DERECHA;
 
-      CargarSecuencia( ESPERANDO,
-                       new string[] { "imagenes/Goku/parado1.png", "imagenes/Goku/parado1.png",
-                                      "imagenes/Goku/parado2.png", "imagenes/Goku/parado2.png",
-                                      "imagenes/Goku/parado3.png", "imagenes/Goku/parado3.png",
-                                      "imagenes/Goku/parado4.png", "imagenes/Goku/parado4.png",
-                                      "imagenes/Goku/parado5.png", "imagenes/Goku/parado5.png",
-                                      "imagenes/Goku/parado6.png", "imagenes/Goku/parado6.png"} );
+    CargarSecuencia( IZQUIERDA,
+                      new string[] { "imagenes/Goku/caminandoI1.png", "imagenes/Goku/caminandoI1.png",
+                                    "imagenes/Goku/caminandoI2.png", "imagenes/Goku/caminandoI2.png",
+                                    "imagenes/Goku/caminandoI3.png", "imagenes/Goku/caminandoI3.png",
+                                    "imagenes/Goku/caminandoI4.png", "imagenes/Goku/caminandoI4.png",
+                                    "imagenes/Goku/caminandoI5.png", "imagenes/Goku/caminandoI5.png",
+                                    "imagenes/Goku/caminandoI6.png", "imagenes/Goku/caminandoI6.png",
+                                    "imagenes/Goku/caminandoI7.png", "imagenes/Goku/caminandoI7.png",
+                                    "imagenes/Goku/caminandoI8.png", "imagenes/Goku/caminandoI8.png"} );
+    direccion = IZQUIERDA;
 
-      direccion = ESPERANDO;
+    CargarSecuencia( ESPERANDO,
+                      new string[] { "imagenes/Goku/parado1.png", "imagenes/Goku/parado1.png",
+                                    "imagenes/Goku/parado2.png", "imagenes/Goku/parado2.png",
+                                    "imagenes/Goku/parado3.png", "imagenes/Goku/parado3.png",
+                                    "imagenes/Goku/parado4.png", "imagenes/Goku/parado4.png",
+                                    "imagenes/Goku/parado5.png", "imagenes/Goku/parado5.png",
+                                    "imagenes/Goku/parado6.png", "imagenes/Goku/parado6.png"} );
 
-      SetAnchoAlto( 45, 45 );
-    }
+      
+
+    CargarSecuencia( GIRANDOPALO,
+                      new string[] { "imagenes/Goku/palo1.png", "imagenes/Goku/palo1.png",
+                                    "imagenes/Goku/palo2.png", "imagenes/Goku/palo2.png",
+                                    "imagenes/Goku/palo3.png", "imagenes/Goku/palo3.png",
+                                    "imagenes/Goku/palo4.png", "imagenes/Goku/palo4.png",
+                                    "imagenes/Goku/palo5.png", "imagenes/Goku/palo5.png",
+                                    "imagenes/Goku/palo6.png", "imagenes/Goku/palo6.png",
+                                    "imagenes/Goku/palo7.png", "imagenes/Goku/palo7.png",
+                                    "imagenes/Goku/palo8.png", "imagenes/Goku/palo8.png",
+                                    "imagenes/Goku/palo2.png", "imagenes/Goku/palo2.png"} );
+
+    direccion = ESPERANDO;
+
+    SetAnchoAlto( 45, 45 );
+  }
 
 
-    // Métodos de movimiento
-    public void MoverDerecha()
-    {
-      direccion = DERECHA;
-      x += 4;
+  // Métodos de movimiento
+  public void MoverDerecha()
+  {
+    direccion = DERECHA;
+    x += 4;
+    SiguienteFotograma();
+  }
+
+  public void MoverIzquierda()
+  {
+    direccion = IZQUIERDA;
+    x -= 4;
+    SiguienteFotograma();
+  }
+
+  public void MoverArriba()
+  {
+      y -= 4;
+  }
+
+  public void MoverAbajo()
+  {
+      y += 4;
+  }
+
+  public void Esperar()
+  {
+    direccion = ESPERANDO;
+    SiguienteFotograma();
+  }
+
+  public void GirarPalo()
+  {
+    direccion = GIRANDOPALO;
+    SiguienteFotograma();
+  }
+
+
+  public void MoverSiguienteFotograma(int valor)
+  {
+      if (valor == 4)
+          direccion = DERECHA;
+      else
+          direccion = IZQUIERDA;
+
       SiguienteFotograma();
-    }
+  }
 
-    public void MoverIzquierda()
-    {
-      direccion = IZQUIERDA;
-      x -= 4;
-      SiguienteFotograma();
-    }
-
-    public void MoverArriba()
-    {
-        y -= 4;
-    }
-
-    public void MoverAbajo()
-    {
-        y += 4;
-    }
-
-    public void Esperar()
-    {
-      direccion = ESPERANDO;
-      SiguienteFotograma();
-    }
+  // Para cuando deba moverse solo, p.ej. saltando, o en
+  // movimiento continuo, como el PacMan
+  public new void Mover()
+  {
+  }
 
 
-    public void MoverSiguienteFotograma(int valor)
-    {
-        if (valor == 4)
-            direccion = DERECHA;
-        else
-            direccion = IZQUIERDA;
-
-        SiguienteFotograma();
-    }
-
-    // Para cuando deba moverse solo, p.ej. saltando, o en
-    // movimiento continuo, como el PacMan
-    public new void Mover()
-    {
-    }
+  public void Disparar()
+  {
+      // TODO: Vacio por ahora
+  }
 
 
-    public void Disparar()
-    {
-        // TODO: Vacio por ahora
-    }
+  // Métodos de acceso a las vidas
+  public int GetVidas()
+  {
+      return vidas;
+  }
 
+  public void SetVidas(short n)
+  {
+      vidas = n;
+  }
 
-    // Métodos de acceso a las vidas
-    public int GetVidas()
-    {
-        return vidas;
-    }
+  public void Morir()
+  {
+      vidas--;
+  }
 
-    public void SetVidas(short n)
-    {
-        vidas = n;
-    }
+  public int GetAncho()
+  {
+      return ancho;
+  }
 
-    public void Morir()
-    {
-        vidas--;
-    }
+  public int GetAlto()
+  {
+      return alto;
+  }
 
-    public int GetAncho()
-    {
-        return ancho;
-    }
+  public void SetX(short valor)
+  {
+    x = valor;
+  }
 
-    public int GetAlto()
-    {
-        return alto;
-    }
+  public void SetY(short valor)
+  {
+    y = valor;
+  }
 
 } /* fin de la clase Personaje */
