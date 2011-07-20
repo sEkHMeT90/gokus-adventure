@@ -52,48 +52,58 @@ public class Personaje : ElemGrafico
 
     CargarSecuencia( DERECHA,
                       new string[] { "imagenes/Goku/caminandoD1.png", "imagenes/Goku/caminandoD1.png",
-                                    "imagenes/Goku/caminandoD2.png", "imagenes/Goku/caminandoD2.png",
-                                    "imagenes/Goku/caminandoD3.png", "imagenes/Goku/caminandoD3.png",
-                                    "imagenes/Goku/caminandoD4.png", "imagenes/Goku/caminandoD4.png",
-                                    "imagenes/Goku/caminandoD5.png", "imagenes/Goku/caminandoD5.png",
-                                    "imagenes/Goku/caminandoD6.png", "imagenes/Goku/caminandoD6.png",
-                                    "imagenes/Goku/caminandoD7.png", "imagenes/Goku/caminandoD7.png",
-                                    "imagenes/Goku/caminandoD8.png", "imagenes/Goku/caminandoD8.png"} );
+                                     "imagenes/Goku/caminandoD2.png", "imagenes/Goku/caminandoD2.png",
+                                     "imagenes/Goku/caminandoD3.png", "imagenes/Goku/caminandoD3.png",
+                                     "imagenes/Goku/caminandoD4.png", "imagenes/Goku/caminandoD4.png",
+                                     "imagenes/Goku/caminandoD5.png", "imagenes/Goku/caminandoD5.png",
+                                     "imagenes/Goku/caminandoD6.png", "imagenes/Goku/caminandoD6.png",
+                                     "imagenes/Goku/caminandoD7.png", "imagenes/Goku/caminandoD7.png",
+                                     "imagenes/Goku/caminandoD8.png", "imagenes/Goku/caminandoD8.png"} );
     direccion = DERECHA;
 
     CargarSecuencia( IZQUIERDA,
                       new string[] { "imagenes/Goku/caminandoI1.png", "imagenes/Goku/caminandoI1.png",
-                                    "imagenes/Goku/caminandoI2.png", "imagenes/Goku/caminandoI2.png",
-                                    "imagenes/Goku/caminandoI3.png", "imagenes/Goku/caminandoI3.png",
-                                    "imagenes/Goku/caminandoI4.png", "imagenes/Goku/caminandoI4.png",
-                                    "imagenes/Goku/caminandoI5.png", "imagenes/Goku/caminandoI5.png",
-                                    "imagenes/Goku/caminandoI6.png", "imagenes/Goku/caminandoI6.png",
-                                    "imagenes/Goku/caminandoI7.png", "imagenes/Goku/caminandoI7.png",
-                                    "imagenes/Goku/caminandoI8.png", "imagenes/Goku/caminandoI8.png"} );
+                                     "imagenes/Goku/caminandoI2.png", "imagenes/Goku/caminandoI2.png",
+                                     "imagenes/Goku/caminandoI3.png", "imagenes/Goku/caminandoI3.png",
+                                     "imagenes/Goku/caminandoI4.png", "imagenes/Goku/caminandoI4.png",
+                                     "imagenes/Goku/caminandoI5.png", "imagenes/Goku/caminandoI5.png",
+                                     "imagenes/Goku/caminandoI6.png", "imagenes/Goku/caminandoI6.png",
+                                     "imagenes/Goku/caminandoI7.png", "imagenes/Goku/caminandoI7.png",
+                                     "imagenes/Goku/caminandoI8.png", "imagenes/Goku/caminandoI8.png"} );
     direccion = IZQUIERDA;
 
-    CargarSecuencia( ESPERANDO,
-                      new string[] { "imagenes/Goku/parado1.png", "imagenes/Goku/parado1.png",
-                                    "imagenes/Goku/parado2.png", "imagenes/Goku/parado2.png",
-                                    "imagenes/Goku/parado3.png", "imagenes/Goku/parado3.png",
-                                    "imagenes/Goku/parado4.png", "imagenes/Goku/parado4.png",
-                                    "imagenes/Goku/parado5.png", "imagenes/Goku/parado5.png",
-                                    "imagenes/Goku/parado6.png", "imagenes/Goku/parado6.png"} );
+    CargarSecuencia( ESPERANDOD,
+                      new string[] { "imagenes/Goku/paradoD1.png", "imagenes/Goku/paradoD1.png",
+                                     "imagenes/Goku/paradoD2.png", "imagenes/Goku/paradoD2.png",
+                                     "imagenes/Goku/paradoD3.png", "imagenes/Goku/paradoD3.png",
+                                     "imagenes/Goku/paradoD4.png", "imagenes/Goku/paradoD4.png",
+                                     "imagenes/Goku/paradoD5.png", "imagenes/Goku/paradoD5.png",
+                                     "imagenes/Goku/paradoD6.png", "imagenes/Goku/paradoD6.png"} );
 
-      
+    direccion = ESPERANDOD;
+
+    CargarSecuencia( ESPERANDOI,
+                      new string[] { "imagenes/Goku/paradoI1.png", "imagenes/Goku/paradoI1.png",
+                                     "imagenes/Goku/paradoI2.png", "imagenes/Goku/paradoI2.png",
+                                     "imagenes/Goku/paradoI3.png", "imagenes/Goku/paradoI3.png",
+                                     "imagenes/Goku/paradoI4.png", "imagenes/Goku/paradoI4.png",
+                                     "imagenes/Goku/paradoI5.png", "imagenes/Goku/paradoI5.png",
+                                     "imagenes/Goku/paradoI6.png", "imagenes/Goku/paradoI6.png"} );
+
+    direccion = ESPERANDOI;
 
     CargarSecuencia( GIRANDOPALO,
                       new string[] { "imagenes/Goku/palo1.png", "imagenes/Goku/palo1.png",
-                                    "imagenes/Goku/palo2.png", "imagenes/Goku/palo2.png",
-                                    "imagenes/Goku/palo3.png", "imagenes/Goku/palo3.png",
-                                    "imagenes/Goku/palo4.png", "imagenes/Goku/palo4.png",
-                                    "imagenes/Goku/palo5.png", "imagenes/Goku/palo5.png",
-                                    "imagenes/Goku/palo6.png", "imagenes/Goku/palo6.png",
-                                    "imagenes/Goku/palo7.png", "imagenes/Goku/palo7.png",
-                                    "imagenes/Goku/palo8.png", "imagenes/Goku/palo8.png",
-                                    "imagenes/Goku/palo2.png", "imagenes/Goku/palo2.png"} );
+                                     "imagenes/Goku/palo2.png", "imagenes/Goku/palo2.png",
+                                     "imagenes/Goku/palo3.png", "imagenes/Goku/palo3.png",
+                                     "imagenes/Goku/palo4.png", "imagenes/Goku/palo4.png",
+                                     "imagenes/Goku/palo5.png", "imagenes/Goku/palo5.png",
+                                     "imagenes/Goku/palo6.png", "imagenes/Goku/palo6.png",
+                                     "imagenes/Goku/palo7.png", "imagenes/Goku/palo7.png",
+                                     "imagenes/Goku/palo8.png", "imagenes/Goku/palo8.png",
+                                     "imagenes/Goku/palo2.png", "imagenes/Goku/palo2.png"} );
 
-    direccion = ESPERANDO;
+    direccion = ESPERANDOD;
 
     SetAnchoAlto( 45, 45 );
   }
@@ -126,8 +136,17 @@ public class Personaje : ElemGrafico
 
   public void Esperar()
   {
-    direccion = ESPERANDO;
-    SiguienteFotograma();
+    if ( (direccion == IZQUIERDA) || (direccion == ESPERANDOI) )
+    {
+      direccion = ESPERANDOI;
+      SiguienteFotograma();
+    }
+
+    if ( (direccion == DERECHA) || (direccion == ESPERANDOD) )
+    {
+      direccion = ESPERANDOD;
+      SiguienteFotograma();
+    }
   }
 
   public void GirarPalo()
