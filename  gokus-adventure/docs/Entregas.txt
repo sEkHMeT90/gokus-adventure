@@ -15,10 +15,16 @@ Entregas:
 14.	-  Salto del personaje
 15.	-  Combos/Poderes del personaje.
 16.	-  Marcador
+17.	-  Gravedad
+18.	-  Limites del mapa
+19.	-  Enemigos por nivel
+20.	-  Arreglar lo del SiguienteFotograma
+21.	-  
+
 
 Pedro: 1, 13
 Raquel: 6, 7
-Aitor: 3, 15
+Aitor: 3, 16
 Toño: 12
 Toni: 4, 5
 Andrés: 8
