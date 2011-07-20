@@ -155,17 +155,6 @@ public class Personaje : ElemGrafico
     SiguienteFotograma();
   }
 
-
-  public void MoverSiguienteFotograma(int valor)
-  {
-      if (valor == 4)
-          direccion = DERECHA;
-      else
-          direccion = IZQUIERDA;
-
-      SiguienteFotograma();
-  }
-
   // Para cuando deba moverse solo, p.ej. saltando, o en
   // movimiento continuo, como el PacMan
   public new void Mover()

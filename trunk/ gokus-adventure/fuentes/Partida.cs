@@ -96,6 +96,8 @@ public class Partida
         else
         {
           MovimientoScroll( IZQUIERDA );
+          miPersonaje.CambiarDireccion((byte)3);
+          miPersonaje.SiguienteFotograma();
         }
       }
     }
@@ -112,6 +114,8 @@ public class Partida
         else
         {
           MovimientoScroll( DERECHA );
+          miPersonaje.CambiarDireccion((byte)2);
+          miPersonaje.SiguienteFotograma();
         }
       }
     }
@@ -168,7 +172,7 @@ public class Partida
   // --- Animación de los enemigos y demás objetos "que se muevan solos" -----
   void moverElementos()
   {
-      miEnemigo.Mover();
+    miEnemigo.Mover();
   }
 
   // --- Movimiento de todos los elementos al hacer uso del Scroll ---
@@ -176,16 +180,9 @@ public class Partida
   {
     // Mapa
     scrollHorizontal += valor;
-      if ( valor == 4)
-        miPersonaje.MoverSiguienteFotograma(DERECHA);
-      else
-        miPersonaje.MoverSiguienteFotograma(IZQUIERDA);
 
-    /*
-    // Enemigos        
-    for (int i = 0; i < mapaActual.GetNumEnemigos(); i++)
-        mapaActual.GetEnemigo(i).MoverScroll(valor);
-    */
+    //Enemigos
+    miEnemigo.MoverScroll(valor);
   }
 
   // --- Comprobar colisiones de enemigo con personaje, etc ---

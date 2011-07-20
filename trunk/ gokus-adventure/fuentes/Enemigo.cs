@@ -61,4 +61,9 @@ class Enemigo : ElemGrafico
         }
     }
 
+    public void MoverScroll(int valor)
+    {
+        x += (short) valor;
+    }
+
 }
