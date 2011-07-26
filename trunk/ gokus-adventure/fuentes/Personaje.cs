@@ -40,8 +40,15 @@ public class Personaje : ElemGrafico
   Poder miPoder;
   short vidas;  // Vidas restantes
 
-  // Constructor
+  // Necesarios para el Salto y la Caida (+ Gravedad)  
+  private bool saltando, cayendo;
+  private int velocidadCaidaY = 6;
+  private int fotogramaMvto;
+  private int cantidadMovimientoSalto;
+  private int[] pasosSaltoArriba = {-14, -14,-12, -12, -10, -10, -8, -8, -6, -6, -4, -2, -1, -1, 
+                                  0, 0, 0, 0, 0, 0, 1, 1, 2, 4, 6, 6, 8, 8, 10, 10, 12, 12, 14, 14};
 
+  // Constructor
   public Personaje(Partida p)
   {
     miPartida = p;   // Para enlazar con el resto de componentes
@@ -59,7 +66,6 @@ public class Personaje : ElemGrafico
                                      "imagenes/Goku/caminandoD6.png", "imagenes/Goku/caminandoD6.png",
                                      "imagenes/Goku/caminandoD7.png", "imagenes/Goku/caminandoD7.png",
                                      "imagenes/Goku/caminandoD8.png", "imagenes/Goku/caminandoD8.png"} );
-    direccion = DERECHA;
 
     CargarSecuencia( IZQUIERDA,
                       new string[] { "imagenes/Goku/caminandoI1.png", "imagenes/Goku/caminandoI1.png",
@@ -70,7 +76,6 @@ public class Personaje : ElemGrafico
                                      "imagenes/Goku/caminandoI6.png", "imagenes/Goku/caminandoI6.png",
                                      "imagenes/Goku/caminandoI7.png", "imagenes/Goku/caminandoI7.png",
                                      "imagenes/Goku/caminandoI8.png", "imagenes/Goku/caminandoI8.png"} );
-    direccion = IZQUIERDA;
 
     CargarSecuencia( ESPERANDOD,
                       new string[] { "imagenes/Goku/paradoD1.png", "imagenes/Goku/paradoD1.png",
@@ -80,8 +85,6 @@ public class Personaje : ElemGrafico
                                      "imagenes/Goku/paradoD5.png", "imagenes/Goku/paradoD5.png",
                                      "imagenes/Goku/paradoD6.png", "imagenes/Goku/paradoD6.png"} );
 
-    direccion = ESPERANDOD;
-
     CargarSecuencia( ESPERANDOI,
                       new string[] { "imagenes/Goku/paradoI1.png", "imagenes/Goku/paradoI1.png",
                                      "imagenes/Goku/paradoI2.png", "imagenes/Goku/paradoI2.png",
@@ -89,8 +92,6 @@ public class Personaje : ElemGrafico
                                      "imagenes/Goku/paradoI4.png", "imagenes/Goku/paradoI4.png",
                                      "imagenes/Goku/paradoI5.png", "imagenes/Goku/paradoI5.png",
                                      "imagenes/Goku/paradoI6.png", "imagenes/Goku/paradoI6.png"} );
-
-    direccion = ESPERANDOI;
 
     CargarSecuencia( GIRANDOPALO,
                       new string[] { "imagenes/Goku/palo1.png", "imagenes/Goku/palo1.png",
@@ -102,36 +103,81 @@ public class Personaje : ElemGrafico
                                      "imagenes/Goku/palo7.png", "imagenes/Goku/palo7.png",
                                      "imagenes/Goku/palo8.png", "imagenes/Goku/palo8.png",
                                      "imagenes/Goku/palo2.png", "imagenes/Goku/palo2.png"} );
-
+    
     direccion = ESPERANDOD;
-
     SetAnchoAlto( 45, 45 );
+
+    cantidadMovimientoSalto = pasosSaltoArriba.Length;
+
+    minX = 350;
+    maxX = 1000;
   }
 
 
   // Métodos de movimiento
   public void MoverDerecha()
   {
-    direccion = DERECHA;
-    x += 4;
-    SiguienteFotograma();
+      // Limitamos que no salga de la pantalla
+      if (x > (790 - ancho)) return;
+      
+      direccion = DERECHA;
+      x += 4;
+      SiguienteFotograma();
   }
 
   public void MoverIzquierda()
   {
-    direccion = IZQUIERDA;
-    x -= 4;
-    SiguienteFotograma();
+      // Limitamos que no salga de la pantalla
+      if (x < 10) return;
+
+      direccion = IZQUIERDA;
+      x -= 4;
+      SiguienteFotograma();
   }
 
   public void MoverArriba()
   {
-      y -= 4;
+      // NADA
   }
 
   public void MoverAbajo()
   {
-      y += 4;
+      // NADA
+  }
+
+  public void Saltar()
+  {
+      if (saltando || cayendo) return;
+
+      saltando = true;
+      fotogramaMvto = 0;
+
+      /*
+      if (direccion == DERECHA)
+          CambiarDireccion(SALTODERECHA);
+
+      if (direccion == IZQUIERDA)
+          CambiarDireccion(SALTOIZQUIERDA);
+      */
+  }
+
+  // Comienza la secuencia de salto hacia la derecha
+  public void SaltarDerecha()
+  {
+      if (saltando || cayendo) return;
+
+      Saltar();
+      // CambiarDireccion(SALTODERECHA);
+  }
+
+
+  // Comienza la secuencia de salto hacia la izquierda
+  public void SaltarIzquierda()
+  {
+      if (saltando || cayendo) return;
+
+      Saltar();
+      // CambiarDireccion(SALTOIZQUIERDA);
   }
 
   public void Esperar()
@@ -157,8 +203,70 @@ public class Personaje : ElemGrafico
 
   // Para cuando deba moverse solo, p.ej. saltando, o en
   // movimiento continuo, como el PacMan
-  public new void Mover()
+  public new void Mover(Mapa m, int scrollHorizontal)
   {
+      // Movimiento del personaje cuando esta saltando...
+      if (saltando)
+      {
+          // Calculo la siguiente posicion y veo si es valida
+          short yProxMov = (short)(y + pasosSaltoArriba[fotogramaMvto]);
+
+          // Si todavía se puede mover, avanzo
+          if (m.EsPosibleMover(x, yProxMov, ancho, alto, scrollHorizontal))
+          {
+              y = yProxMov;
+          }
+          // Y si no, quizá esté cayendo
+          else
+          {
+              saltando = false;
+              cayendo = true;
+          }
+
+          fotogramaMvto++;
+          if (fotogramaMvto >= cantidadMovimientoSalto)
+          {
+              saltando = false;
+              cayendo = true;
+          }
+      }
+      else if (cayendo)
+      {
+          if (m.EsPosibleCaer(
+          x, y + 2, ancho, alto, scrollHorizontal))
+          {
+              if (m.EsPosibleCaer(
+              x, y + velocidadCaidaY, ancho, alto, scrollHorizontal))
+                  y += (short) velocidadCaidaY;
+              else
+                  y += 2;
+
+              // Cuando más altura tenga la caída, mayor es el incremento...
+              if (velocidadCaidaY <= 10)
+                  velocidadCaidaY++;
+          }
+          else
+          {
+              cayendo = false;
+              velocidadCaidaY = 4;
+              /*
+              // Al terminar el salto o caida vuelve la imagen del personaje parado...
+              if (direccion == SALTODERECHA)
+                  CambiarDireccion(DERECHA);
+
+              if (direccion == SALTOIZQUIERDA)
+                  CambiarDireccion(IZQUIERDA);
+              */
+              // SiguienteFotograma();
+          }
+      }
+  }
+
+  // Necesaria para las limitaciones del mapa...
+  public void MoverScroll(int valor)
+  {
+      minX += valor;
+      maxX += valor;
   }
 
 
