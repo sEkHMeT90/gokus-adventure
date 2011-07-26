@@ -83,6 +83,17 @@ public class Partida
   // --- Comprobación de teclas, ratón y joystick -----
   void comprobarTeclas()
   {
+      // Salto del personaje (BARRA ESPACIO)
+      if (Hardware.TeclaPulsada(Hardware.TECLA_ESP))
+      {
+          if (Hardware.TeclaPulsada(Hardware.TECLA_DER))
+              miPersonaje.SaltarDerecha();
+          else if (Hardware.TeclaPulsada(Hardware.TECLA_IZQ))
+              miPersonaje.SaltarIzquierda();
+          else
+              miPersonaje.Saltar();
+      }
+
     // Muevo si se pulsa alguna flecha del teclado
     if ( Hardware.TeclaPulsada( Hardware.TECLA_IZQ ) )
     {
@@ -90,7 +101,7 @@ public class Partida
       miPersonaje.GetAncho(), miPersonaje.GetAlto(), scrollHorizontal ) )
       {
         // Si la X del personaje es mayor a 350 se mueve solo el personaje
-        if ( miPersonaje.GetX() > 350 )
+        if (miPersonaje.GetX() > 350 || miPersonaje.GetX() < miPersonaje.GetMinX())
           miPersonaje.MoverIzquierda();
         // Si no movemos el resto de elementos simulando Scroll
         else
@@ -107,8 +118,8 @@ public class Partida
       if ( miMapa.EsPosibleMover( miPersonaje.GetX() + incrX, miPersonaje.GetY(),
       miPersonaje.GetAncho(), miPersonaje.GetAlto(), scrollHorizontal ) )
       {
-        // Si la X del personaje es mayor a 450 se mueve solo el personaje
-        if ( miPersonaje.GetX() < 450 )
+        // Si la X del personaje es menor a 450 se mueve solo el personaje
+        if (miPersonaje.GetX() < 450 || miPersonaje.GetX() > miPersonaje.GetMaxX())
           miPersonaje.MoverDerecha();
         // Si no movemos el resto de elementos simulando Scroll
         else
@@ -125,9 +136,6 @@ public class Partida
 
     if ( Hardware.TeclaPulsada( Hardware.TECLA_ABA ) )
       miPersonaje.MoverAbajo();
-
-    if ( Hardware.TeclaPulsada( Hardware.TECLA_ESP ) )
-      miPersonaje.Disparar();
 
     if ( Hardware.TeclaPulsada( Hardware.TECLA_C ) && (!partidaPausada) )
       partidaPausada = true;
@@ -172,7 +180,8 @@ public class Partida
   // --- Animación de los enemigos y demás objetos "que se muevan solos" -----
   void moverElementos()
   {
-    miEnemigo.Mover();
+      miPersonaje.Mover(miMapa, scrollHorizontal);
+      miEnemigo.Mover();     
   }
 
   // --- Movimiento de todos los elementos al hacer uso del Scroll ---
@@ -183,6 +192,9 @@ public class Partida
 
     //Enemigos
     miEnemigo.MoverScroll(valor);
+
+    // Personaje
+    miPersonaje.MoverScroll(valor);
   }
 
   // --- Comprobar colisiones de enemigo con personaje, etc ---
@@ -224,7 +236,7 @@ public class Partida
   // --- Pausa tras cada fotograma de juego, para velocidad de 25 fps -----
   void pausaFotograma()
   {
-    Hardware.Pausa( 40 );
+    Hardware.Pausa( 25 );
   }
 
   // --- Bucle principal de juego -----

@@ -23,7 +23,7 @@ public class Nivel
 
     private int altoMapa = 18, anchoMapa = 97;
     private int anchoTile = 32, altoTile = 32;
-    private int margenIzqdo = 20, margenSuperior = 15;
+    private int margenIzqdo = 0, margenSuperior = 30;
     
     protected Mapa mapaPertenece;
 

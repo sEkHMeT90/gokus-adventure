@@ -296,6 +296,17 @@ public class ElemGrafico
         maxY = maximo;
     }
 
+    // Devuelven las maximas y minimas de X
+    public int GetMinX()
+    {
+        return minX;
+    }
+
+    public int GetMaxX()
+    {
+        return maxX;
+    }
+
     /// Cambia la velocidad (incrX e incrY) de un elemento
     public void SetVelocidad(int vX, int vY)
     {
