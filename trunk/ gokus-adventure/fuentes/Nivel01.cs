@@ -40,12 +40,25 @@ public class Nivel01 : Nivel
         datosNivelIniciales[17] = "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR";
 
         this.Reiniciar();
+
     }
 
     public override void Reiniciar()
     {
+        CrearEnemigos();
         base.Reiniciar();
-        // CrearEnemigos();
+    }
+
+    public void CrearEnemigos()
+    {
+        numEnemigos = 1;        
+        listaEnemigos = new Enemigo[numEnemigos];
+
+        listaEnemigos[0] = new Enemigo();
+        listaEnemigos[0].MoverA(630, 360);
+        listaEnemigos[0].SetVelocidad(2, 0);
+        listaEnemigos[0].setMinMaxX(625, 700);
+        listaEnemigos[0].SetAnchoAlto(25, 25);
     }
 
 } /* fin de la clase Nivel01 */

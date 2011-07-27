@@ -64,12 +64,12 @@ public class Partida
   public Partida()
   {
     miPersonaje = new Personaje( this );
-    miEnemigo = new Enemigo();
+    /*miEnemigo = new Enemigo();
     //Enemigo
-    miEnemigo.MoverA(400, 360);         
+    miEnemigo.MoverA(630, 360);         
     miEnemigo.SetVelocidad(2, 0);       
-    miEnemigo.setMinMaxX(100, 700);     
-    miEnemigo.SetAnchoAlto(25, 25);   
+    miEnemigo.setMinMaxX(625, 700);     
+    miEnemigo.SetAnchoAlto(25, 25);*/
   
     miMapa = new Mapa( this, miPersonaje );
     puntos = 0;
@@ -130,7 +130,6 @@ public class Partida
         }
       }
     }
-
     if ( Hardware.TeclaPulsada( Hardware.TECLA_ARR ) )
       miPersonaje.MoverArriba();
 
@@ -181,7 +180,9 @@ public class Partida
   void moverElementos()
   {
       miPersonaje.Mover(miMapa, scrollHorizontal);
-      miEnemigo.Mover();     
+      //miEnemigo.Mover();
+      for (int i = 0; i < miMapa.GetNumEnemigos(); i++)
+          miMapa.GetEnemigo(i).Mover();
   }
 
   // --- Movimiento de todos los elementos al hacer uso del Scroll ---
@@ -191,7 +192,9 @@ public class Partida
     scrollHorizontal += valor;
 
     //Enemigos
-    miEnemigo.MoverScroll(valor);
+    for (int i = 0; i < miMapa.GetNumEnemigos(); i++)
+        miMapa.GetEnemigo(i).MoverScroll(valor);
+    //miEnemigo.MoverScroll(valor);
 
     // Personaje
     miPersonaje.MoverScroll(valor);
@@ -220,7 +223,9 @@ public class Partida
     miPersonaje.DibujarOculta();
 
     //Dibujo el enemigo
-    miEnemigo.DibujarOculta();
+    for (int i = 0; i < miMapa.GetNumEnemigos(); i++)
+        miMapa.GetEnemigo(i).DibujarOculta();
+    //miEnemigo.DibujarOculta();
 
     if ( partidaPausada )
     {

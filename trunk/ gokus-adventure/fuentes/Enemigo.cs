@@ -12,11 +12,13 @@
                       Version inicial: Creada la clase "Enemigo".
    0.02  10-Jul-2011  Antonio Ramos
                       Creado un constructor vacio para probar los movimientos del enemigo y la funcion mover
+   0.03  27-Jul-2011  Antonio Ramos
+                      Añadido al enemigo el movimiento scroll independiente de donde este el enemigo
  ---------------------------------------------------- */
 
 using System;
 
-class Enemigo : ElemGrafico
+public class Enemigo : ElemGrafico
 {
     /* Para su funcionamiento:
       
@@ -64,6 +66,9 @@ class Enemigo : ElemGrafico
     public void MoverScroll(int valor)
     {
         x += (short) valor;
+        minX += Convert.ToInt16(valor);
+        maxX += Convert.ToInt16(valor);
+        
     }
 
 }
