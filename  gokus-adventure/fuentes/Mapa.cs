@@ -20,7 +20,7 @@ public class Mapa
 {
   Nivel nivelActual;
   Nivel[] listaNiveles;
-  Partida miPartida;
+  private Partida miPartida;
   Personaje miPersonaje;
 
   const int MAX_NIVELES = 2;
@@ -119,17 +119,17 @@ public class Mapa
   {
     return nivelActual.GetMinY();
   }
-  /*
+
   public int GetNumEnemigos()
   {
-    return nivelActual.GetNumEnemigos();
+      return nivelActual.GetNumEnemigos();
   }
 
   public Enemigo GetEnemigo(int i)
   {
-    return nivelActual.GetEnemigo(i);
+      return nivelActual.GetEnemigo(i);
   }
-  */
+  
   public void SetNivel(int valor) // Empleado al cargar Partida
   {
     numeroNivelActual = valor;

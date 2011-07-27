@@ -19,7 +19,7 @@
 public class Nivel
 {
     // Datos del mapa de fondo 
-    // private Partida miPartida;
+    protected Partida miPartida;
 
     private int altoMapa = 18, anchoMapa = 97;
     private int anchoTile = 32, altoTile = 32;
@@ -29,6 +29,10 @@ public class Nivel
 
     // Imagenes para el fondo
     ElemGrafico muroRojo, hierba, cartel;
+
+    //Enemigos
+    protected int numEnemigos;
+    protected Enemigo[] listaEnemigos;
 
     string[] datosNivel; // Datos en el momento de Juego
 
@@ -61,7 +65,8 @@ public class Nivel
         muroRojo = new ElemGrafico("imagenes/Mapa/muroRojo.PNG");
         hierba = new ElemGrafico("imagenes/Mapa/hierba.PNG");
         cartel = new ElemGrafico( "imagenes/Mapa/imagenCartel.PNG" );
-        
+
+        numEnemigos = 0;
         datosNivel = new string[altoMapa];
         Reiniciar();
     }
@@ -183,5 +188,18 @@ public class Nivel
         mapaPertenece.Avanzar();
     }
 
+    //Para los enemigos
+    public int GetNumEnemigos()
+    {
+        return numEnemigos;
+    }
+
+    public Enemigo GetEnemigo(int i)
+    {
+        if (numEnemigos > i)
+            return listaEnemigos[i];
+
+        return null;
+    }
 
 } /* end class Mapa */
