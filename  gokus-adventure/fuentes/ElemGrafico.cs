@@ -176,7 +176,7 @@ public class ElemGrafico
 
 
     /// Dibuja el elemento grafico en su posicion actual en pantalla oculta
-    public void DibujarOculta()
+    public virtual void DibujarOculta()
     {
         if (visible == false) return;
         if (contieneSecuencia)

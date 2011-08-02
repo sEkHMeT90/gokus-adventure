@@ -121,6 +121,7 @@ public class Personaje : ElemGrafico
       if (x > (790 - ancho)) return;
       
       direccion = DERECHA;
+      cayendo = true;
       x += 4;
       SiguienteFotograma();
   }
@@ -131,6 +132,7 @@ public class Personaje : ElemGrafico
       if (x < 10) return;
 
       direccion = IZQUIERDA;
+      cayendo = true;
       x -= 4;
       SiguienteFotograma();
   }
@@ -203,7 +205,7 @@ public class Personaje : ElemGrafico
 
   // Para cuando deba moverse solo, p.ej. saltando, o en
   // movimiento continuo, como el PacMan
-  public new void Mover(Mapa m, int scrollHorizontal)
+  public void Mover(Mapa m, int scrollHorizontal)
   {
       // Movimiento del personaje cuando esta saltando...
       if (saltando)
@@ -310,6 +312,11 @@ public class Personaje : ElemGrafico
   public void SetY(short valor)
   {
     y = valor;
+  }
+
+  public void SetCayendo(bool valor)
+  {
+      cayendo = true;
   }
 
 } /* fin de la clase Personaje */

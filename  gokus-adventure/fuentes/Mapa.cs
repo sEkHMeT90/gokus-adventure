@@ -120,15 +120,38 @@ public class Mapa
     return nivelActual.GetMinY();
   }
 
-  public int GetNumEnemigos()
-  {
-      return nivelActual.GetNumEnemigos();
-  }
+    // Para extraer enemigos del Nivel
+    public int GetNumEnemigos()
+    {
+        return nivelActual.GetNumEnemigos();
+    }
 
-  public Enemigo GetEnemigo(int i)
-  {
-      return nivelActual.GetEnemigo(i);
-  }
+    public Enemigo GetEnemigo(int i)
+    {
+        return nivelActual.GetEnemigo(i);
+    }
+
+    // Para extraer los carteler del Nivel
+    public int GetNumCarteles()
+    {
+        return nivelActual.GetNumCarteles();
+    }
+
+    public CartelAyuda GetCartel(int i)
+    {
+        return nivelActual.GetCartel(i);
+    }
+
+    // Necesario para la muestra de carteles
+    public void MostrarCartel(ElemGrafico cartelMostrar)
+    {
+        miPartida.MostrarCartel(cartelMostrar);
+    }
+
+    public void QuitarCartel()
+    {
+        miPartida.QuitarCartel();
+    }
   
   public void SetNivel(int valor) // Empleado al cargar Partida
   {

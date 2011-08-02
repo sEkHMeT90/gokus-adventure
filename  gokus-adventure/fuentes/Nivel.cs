@@ -11,9 +11,6 @@
    0.01  09-Jul-2011  Pedro Zalacain
    					   Creada la clase
                        Enlazado con Mapa para AvanzarNivel
-   0.02  12-Jul-2011  Antonio Pérez
-                       Agregado el atributo "cartel" y el caso "C"
-                       en el switch que dibuja el fondo
  ---------------------------------------------------- */
 
 public class Nivel
@@ -21,18 +18,22 @@ public class Nivel
     // Datos del mapa de fondo 
     protected Partida miPartida;
 
-    private int altoMapa = 18, anchoMapa = 97;
-    private int anchoTile = 32, altoTile = 32;
-    private int margenIzqdo = 0, margenSuperior = 30;
+    protected int altoMapa = 18, anchoMapa = 97;
+    protected int anchoTile = 32, altoTile = 32;
+    protected int margenIzqdo = 0, margenSuperior = 30;
     
     protected Mapa mapaPertenece;
 
     // Imagenes para el fondo
-    ElemGrafico muroRojo, hierba, cartel;
+    ElemGrafico muroRojo, hierba;
 
-    //Enemigos
+    // Enemigos
     protected int numEnemigos;
     protected Enemigo[] listaEnemigos;
+
+    // Carteles de Ayuda
+    protected int numCarteles;
+    protected CartelAyuda[] listaCarteles;
 
     string[] datosNivel; // Datos en el momento de Juego
 
@@ -64,7 +65,6 @@ public class Nivel
         // Casillas repetitivas para el fondo
         muroRojo = new ElemGrafico("imagenes/Mapa/muroRojo.PNG");
         hierba = new ElemGrafico("imagenes/Mapa/hierba.PNG");
-        cartel = new ElemGrafico( "imagenes/Mapa/imagenCartel.PNG" );
 
         numEnemigos = 0;
         datosNivel = new string[altoMapa];
@@ -89,7 +89,6 @@ public class Nivel
                 {
                     case 'R': muroRojo.DibujarOculta(posX + valor, posY); break;
                     case 'H': hierba.DibujarOculta(posX + valor, posY); break;
-                    case 'C': cartel.DibujarOculta( posX + valor, posY ); break;
                 }
             }
     }
@@ -160,6 +159,17 @@ public class Nivel
         return true;
     }
 
+    // Necesario para la muestra de carteles
+    public void MostrarCartel(ElemGrafico cartelMostrar)
+    {
+        mapaPertenece.MostrarCartel(cartelMostrar);
+    }
+
+    public void QuitarCartel()
+    {
+        mapaPertenece.QuitarCartel();
+    }
+
     public int GetMaxX()
     {
         return 800 - margenIzqdo;
@@ -188,7 +198,7 @@ public class Nivel
         mapaPertenece.Avanzar();
     }
 
-    //Para los enemigos
+    // Para los enemigos
     public int GetNumEnemigos()
     {
         return numEnemigos;
@@ -198,6 +208,20 @@ public class Nivel
     {
         if (numEnemigos > i)
             return listaEnemigos[i];
+
+        return null;
+    }
+
+    // Para los Carteles
+    public int GetNumCarteles()
+    {
+        return numCarteles;
+    }
+
+    public CartelAyuda GetCartel(int i)
+    {
+        if (numCarteles > i)
+            return listaCarteles[i];
 
         return null;
     }
