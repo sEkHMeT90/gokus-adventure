@@ -46,7 +46,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\fuentes\Ayuda.cs" />
+    <Compile Include="..\fuentes\CartelAyuda.cs" />
     <Compile Include="..\fuentes\CargarGuardar.cs" />
     <Compile Include="..\fuentes\Creditos.cs" />
     <Compile Include="..\fuentes\ElemGrafico.cs" />

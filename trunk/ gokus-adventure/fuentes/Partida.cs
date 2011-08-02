@@ -31,22 +31,19 @@
    0.06  14-Jul-2011  Antonio Ramos
                       Modificada la funcion scroll para que cuando el personaje
                         llege al limite del scroll se mueva y no siga parado.
+   0.07  02-Ago-2011  Antonio Perez y Pedro Zalacain
+                       Agregada la muestra de carteles de ayuda.
  ---------------------------------------------------- */
 
 public class Partida
 {
-  // Atributos
-  private Fuente fuenteSans12;
-
   // Componentes del juego
-  private Personaje miPersonaje;
-  private Enemigo miEnemigo;
+  public Personaje miPersonaje;
   public Mapa miMapa;
 
   // Otros datos del juego
   int puntos;             // Puntuacion obtenida por el usuario
   bool partidaTerminada;  // Si ha terminado una partida
-  bool partidaPausada;    // Si se ha pausado la partida
 
   // Necesarias para el Scroll
   int scrollHorizontal = 0;
@@ -54,35 +51,29 @@ public class Partida
   int DERECHA = -4;
   int IZQUIERDA = 4;
 
-  // Variables para los carteles de ayuda
-  static int MAX_CARTELES = 1;
-  Ayuda cartelAyuda;
-  ElemGrafico recuadroCartelAyuda = new ElemGrafico();
-  bool posibleMostrarCartel = false;
+  // Necesarias para la muestra de carteles
+  ElemGrafico cartelMostrado;
+  bool mostrandoCartel;
 
   // Inicialización al comenzar la sesión de juego
   public Partida()
   {
-    miPersonaje = new Personaje( this );
-    /*miEnemigo = new Enemigo();
-    //Enemigo
-    miEnemigo.MoverA(630, 360);         
-    miEnemigo.SetVelocidad(2, 0);       
-    miEnemigo.setMinMaxX(625, 700);     
-    miEnemigo.SetAnchoAlto(25, 25);*/
-  
+    miPersonaje = new Personaje( this );  
     miMapa = new Mapa( this, miPersonaje );
     puntos = 0;
     partidaTerminada = false;
-    partidaPausada = false;
-    cartelAyuda = new Ayuda( "Esto es una prueba...", 150, 200 );
-    recuadroCartelAyuda.CargarImagen( "imagenes/Mapa/recuadroCartelAyuda.PNG" );
-    fuenteSans12 = new Fuente( "FreeSansBold.ttf", 12 );
+
+    // Para el cartel
+    cartelMostrado = new ElemGrafico("imagenes/CartelesAyuda/CartelPrueba.PNG");
+    cartelMostrado.SetVisible(false);
+    mostrandoCartel = false;
   }
 
   // --- Comprobación de teclas, ratón y joystick -----
   void comprobarTeclas()
   {
+      if (mostrandoCartel) return;
+
       // Salto del personaje (BARRA ESPACIO)
       if (Hardware.TeclaPulsada(Hardware.TECLA_ESP))
       {
@@ -108,6 +99,7 @@ public class Partida
         {
           MovimientoScroll( IZQUIERDA );
           miPersonaje.CambiarDireccion((byte)3);
+          miPersonaje.SetCayendo(true);
           miPersonaje.SiguienteFotograma();
         }
       }
@@ -126,6 +118,7 @@ public class Partida
         {
           MovimientoScroll( DERECHA );
           miPersonaje.CambiarDireccion((byte)2);
+          miPersonaje.SetCayendo(true);
           miPersonaje.SiguienteFotograma();
         }
       }
@@ -135,12 +128,6 @@ public class Partida
 
     if ( Hardware.TeclaPulsada( Hardware.TECLA_ABA ) )
       miPersonaje.MoverAbajo();
-
-    if ( Hardware.TeclaPulsada( Hardware.TECLA_C ) && (!partidaPausada) )
-      partidaPausada = true;
-
-    if ( Hardware.TeclaPulsada( Hardware.TECLA_V ) && (partidaPausada) )
-      partidaPausada = false;
 
     // Compruebo el Joystick
     if ( Hardware.JoystickPulsado( 0 ) )
@@ -155,12 +142,14 @@ public class Partida
       else if ( posYJoystick < 0 ) miPersonaje.MoverArriba();
     }
 
-    // Compruebo el raton
+    /*
+    // Compruebo el raton    
     int posXRaton = 0, posYRaton = 0;
     if ( Hardware.RatonPulsado( out posXRaton, out posYRaton ) )
     {
-      miPersonaje.MoverA( posXRaton, posYRaton );
+        miPersonaje.MoverA( posXRaton, posYRaton );
     }
+    */ 
 
     // Si se pulsa ESC, por ahora termina la partida... y el juego
     if ( Hardware.TeclaPulsada( Hardware.TECLA_ESC ) )
@@ -179,8 +168,12 @@ public class Partida
   // --- Animación de los enemigos y demás objetos "que se muevan solos" -----
   void moverElementos()
   {
+      if (mostrandoCartel) return;
+
+      // Personaje
       miPersonaje.Mover(miMapa, scrollHorizontal);
-      //miEnemigo.Mover();
+
+      // Enemigos
       for (int i = 0; i < miMapa.GetNumEnemigos(); i++)
           miMapa.GetEnemigo(i).Mover();
   }
@@ -191,10 +184,13 @@ public class Partida
     // Mapa
     scrollHorizontal += valor;
 
-    //Enemigos
+    // Enemigos
     for (int i = 0; i < miMapa.GetNumEnemigos(); i++)
         miMapa.GetEnemigo(i).MoverScroll(valor);
-    //miEnemigo.MoverScroll(valor);
+
+    // Carteles de Ayuda
+    for (int i = 0; i < miMapa.GetNumCarteles(); i++)
+        miMapa.GetCartel(i).MoverScroll(valor);
 
     // Personaje
     miPersonaje.MoverScroll(valor);
@@ -203,10 +199,11 @@ public class Partida
   // --- Comprobar colisiones de enemigo con personaje, etc ---
   void comprobarColisiones()
   {
-    if ( miPersonaje.ColisionCon( cartelAyuda ) )
-      posibleMostrarCartel = true;
-    else
-      posibleMostrarCartel = false;
+      /// Cercania a los carteles
+      for (int i = 0; i < miMapa.GetNumCarteles(); i++)
+          miMapa.GetCartel(i).ComprobarCercania(miPersonaje.GetX(), miPersonaje.GetY());
+
+      if (mostrandoCartel) return;
   }
 
 
@@ -222,17 +219,16 @@ public class Partida
     // Dibujo el personaje
     miPersonaje.DibujarOculta();
 
-    //Dibujo el enemigo
+    // Dibujo los enemigos
     for (int i = 0; i < miMapa.GetNumEnemigos(); i++)
         miMapa.GetEnemigo(i).DibujarOculta();
-    //miEnemigo.DibujarOculta();
 
-    if ( partidaPausada )
-    {
-      recuadroCartelAyuda.DibujarOculta( 250, 20 );
-      Hardware.EscribirTextoOculta( cartelAyuda.GetTextoAyuda(), 260, 30, 0, 0, 0, fuenteSans12 );
-      Hardware.EscribirTextoOculta( "Pulsa V para cerrar", 330, 100, 0, 0, 0, fuenteSans12 );
-    }
+    // Dibujo los carteles
+    for (int i = 0; i < miMapa.GetNumCarteles(); i++)
+        miMapa.GetCartel(i).DibujarOculta(); 
+
+    // Por ultimo mostramos el cartel de ayuda (en caso que haya...)
+    cartelMostrado.DibujarOculta();
 
     // Finalmente, muestro en pantalla
     Hardware.VisualizarOculta();
@@ -244,10 +240,22 @@ public class Partida
     Hardware.Pausa( 25 );
   }
 
+  public void MostrarCartel(ElemGrafico cartelMostrar)
+  {
+      cartelMostrado = cartelMostrar;
+      cartelMostrado.SetVisible(true);
+      mostrandoCartel = true;
+  }
+
+  public void QuitarCartel()
+  {
+      cartelMostrado.SetVisible(false);
+      mostrandoCartel = false;
+  }
+
   // --- Bucle principal de juego -----
   public void BuclePrincipal()
   {
-
     partidaTerminada = false;
     do
     {

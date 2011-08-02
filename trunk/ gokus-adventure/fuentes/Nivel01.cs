@@ -33,7 +33,7 @@ public class Nivel01 : Nivel
         datosNivelIniciales[10] = "                                                                                                 ";
         datosNivelIniciales[11] = "                                                                                                 ";
         datosNivelIniciales[12] = "                                                                                                 ";
-        datosNivelIniciales[13] = "      C                                                                                          ";
+        datosNivelIniciales[13] = "                                                                                                 ";
         datosNivelIniciales[14] = "HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH";
         datosNivelIniciales[15] = "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR";
         datosNivelIniciales[16] = "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR";
@@ -46,6 +46,7 @@ public class Nivel01 : Nivel
     public override void Reiniciar()
     {
         CrearEnemigos();
+        CrearCarteles();
         base.Reiniciar();
     }
 
@@ -59,6 +60,15 @@ public class Nivel01 : Nivel
         listaEnemigos[0].SetVelocidad(2, 0);
         listaEnemigos[0].setMinMaxX(625, 700);
         listaEnemigos[0].SetAnchoAlto(25, 25);
+    }
+
+    public void CrearCarteles()
+    {
+        numCarteles = 2;
+        listaCarteles = new CartelAyuda[numCarteles];
+
+        listaCarteles[0] = new CartelAyuda(200, 450, "imagenes/CartelesAyuda/CartelPrueba.PNG", this);
+        listaCarteles[1] = new CartelAyuda(600, 450, "imagenes/CartelesAyuda/CartelPrueba2.PNG", this);
     }
 
 } /* fin de la clase Nivel01 */
