@@ -53,13 +53,12 @@ public class Nivel01 : Nivel
     public void CrearEnemigos()
     {
         numEnemigos = 1;        
-        listaEnemigos = new Enemigo[numEnemigos];
+        listaEnemigos = new EnemigoPterodactyl[numEnemigos];
 
-        listaEnemigos[0] = new Enemigo();
-        listaEnemigos[0].MoverA(630, 360);
-        listaEnemigos[0].SetVelocidad(2, 0);
-        listaEnemigos[0].setMinMaxX(625, 700);
-        listaEnemigos[0].SetAnchoAlto(25, 25);
+        listaEnemigos[ 0 ] = new EnemigoPterodactyl( 630 , 360 , 2);
+        listaEnemigos[ 0 ].setMinMaxX( 425, 700 );
+        listaEnemigos[ 0 ].CambiarDireccion( ElemGrafico.DERECHA );
+
     }
 
     public void CrearCarteles()

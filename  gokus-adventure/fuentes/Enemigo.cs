@@ -30,13 +30,13 @@ public class Enemigo : ElemGrafico
       miEnemigo.Mover(); para que se mueva solo.
       
      */
-
+    /*
     // Constructor para probar el movimiento automatico imagen del personaje para verlo en movimiento de prueba
     public Enemigo()
     {
         CargarImagen("imagenes/personaje.png");
     }
-
+    */
 
     // Funcion para mover al personaje automaticamente.
     // TODO: El movimiento es independiente del scroll
@@ -45,21 +45,32 @@ public class Enemigo : ElemGrafico
     {
         if (incrX != 0)
         {
-            x += incrX;
+          x += incrX;
+          SiguienteFotograma();
 
-            if ((x < minX) || (x > maxX))
-            {
-                incrX = (short)(-incrX);
-            }
+          if ((x < minX) || (x > maxX))
+          {
+              incrX = (short)(-incrX);
+              if ( incrX < 0 )
+                CambiarDireccion( IZQUIERDA );
+              else
+                CambiarDireccion( DERECHA );
+          }
         }
         if (incrY != 0)
         {
-            y += incrY;
+          y += incrY;
+          SiguienteFotograma();
 
-            if ((y < minY) || (y > maxY))
-            {
-                incrY = (short)(-incrY);
-            }
+          if ((y < minY) || (y > maxY))
+          {
+            incrY = (short)( -incrY );
+              
+            if ( incrY < 0 )
+              CambiarDireccion( ARRIBA );
+            else
+              CambiarDireccion( ABAJO );
+          }
         }
     }
 
