@@ -66,6 +66,7 @@
     <Compile Include="..\fuentes\Sonido.cs" />
     <Compile Include="..\fuentes\Nivel01.cs" />
     <Compile Include="..\fuentes\NivelAyuda.cs" />
+	<Compile Include="..\fuentes\Marcador.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

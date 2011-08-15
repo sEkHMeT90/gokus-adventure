@@ -33,6 +33,10 @@
                         llege al limite del scroll se mueva y no siga parado.
    0.07  02-Ago-2011  Antonio Perez y Pedro Zalacain
                        Agregada la muestra de carteles de ayuda.
+   0.08  15-Ago-2011  Pedro Zalacain
+                       Agregado Marcador.
+                       Restado de vida al colisionar con enemigos.
+                       Reinicio de la partida si salimos con ESC.
  ---------------------------------------------------- */
 
 public class Partida
@@ -40,6 +44,7 @@ public class Partida
   // Componentes del juego
   public Personaje miPersonaje;
   public Mapa miMapa;
+  public Marcador miMarcador;
 
   // Otros datos del juego
   int puntos;             // Puntuacion obtenida por el usuario
@@ -57,16 +62,22 @@ public class Partida
 
   // Inicialización al comenzar la sesión de juego
   public Partida()
-  {
-    miPersonaje = new Personaje( this );  
-    miMapa = new Mapa( this, miPersonaje );
-    puntos = 0;
-    partidaTerminada = false;
+  {   
+    Reiniciar();
+  }
 
-    // Para el cartel
-    cartelMostrado = new ElemGrafico("imagenes/CartelesAyuda/CartelPrueba.PNG");
-    cartelMostrado.SetVisible(false);
-    mostrandoCartel = false;
+  public void Reiniciar()
+  {
+      miPersonaje = new Personaje(this);
+      miMapa = new Mapa(this, miPersonaje);
+      miMarcador = new Marcador(this);
+
+      puntos = 0;
+
+      // Para el cartel
+      cartelMostrado = new ElemGrafico("imagenes/CartelesAyuda/CartelPrueba.PNG");
+      cartelMostrado.SetVisible(false);
+      mostrandoCartel = false;
   }
 
   // --- Comprobación de teclas, ratón y joystick -----
@@ -152,8 +163,11 @@ public class Partida
     */ 
 
     // Si se pulsa ESC, por ahora termina la partida... y el juego
-    if ( Hardware.TeclaPulsada( Hardware.TECLA_ESC ) )
-      partidaTerminada = true;
+    if (Hardware.TeclaPulsada(Hardware.TECLA_ESC))
+    {
+        partidaTerminada = true;
+        Reiniciar();
+    }
 
     // Si no se pulsa ninguna tecla
     if ( ( !Hardware.TeclaPulsada( Hardware.TECLA_DER ) ) && ( !Hardware.TeclaPulsada( Hardware.TECLA_IZQ ) ) &&
@@ -204,6 +218,10 @@ public class Partida
           miMapa.GetCartel(i).ComprobarCercania(miPersonaje.GetX(), miPersonaje.GetY());
 
       if (mostrandoCartel) return;
+
+      for (int i = 0; i < miMapa.GetNumEnemigos(); i++)
+          if (miPersonaje.ColisionCon(miMapa.GetEnemigo(i)))
+              miPersonaje.SetToques(miPersonaje.GetToques() - 1);
   }
 
 
@@ -225,7 +243,14 @@ public class Partida
 
     // Dibujo los carteles
     for (int i = 0; i < miMapa.GetNumCarteles(); i++)
-        miMapa.GetCartel(i).DibujarOculta(); 
+        miMapa.GetCartel(i).DibujarOculta();
+
+    // Marcador
+
+    // miMarcador.SetPuntuacion(puntos);
+    // miMarcador.SetVidas(miPersonaje.GetVidas());
+    miMarcador.SetToques(miPersonaje.GetToques());
+    miMarcador.DibujarOculta();
 
     // Por ultimo mostramos el cartel de ayuda (en caso que haya...)
     cartelMostrado.DibujarOculta();
@@ -256,7 +281,7 @@ public class Partida
   // --- Bucle principal de juego -----
   public void BuclePrincipal()
   {
-    partidaTerminada = false;
+      partidaTerminada = false;
     do
     {
       comprobarTeclas();
