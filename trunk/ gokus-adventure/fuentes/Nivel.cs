@@ -39,23 +39,23 @@ public class Nivel
 
     protected string[] datosNivelIniciales = {
     	"                                                                                                 ",
-        "                                                                                                 ",
+      "                                                                                                 ",
     	"                                                                                                 ",
-        "                                                                                                 ",
-        "                                                                                                 ",
-        "                                                                                                 ",
-        "                                                                                                 ",
+      "                                                                                                 ",
+      "                                                                                                 ",
+      "                                                                                                 ",
+      "                                                                                                 ",
     	"                                                                                                 ",
     	"                                                                                                 ",
     	"                                                                                                 ",
-        "                                                                                                 ",
-        "                                                                                                 ",
-        "                                                                                                 ",
-        "                                                                                                 ",
-        "                                                                                                 ",
-        "                                                                                                 ",
-        "                                                                                                 ",
-        "                                                                                                 "};
+      "                                                                                                 ",
+      "                                                                                                 ",
+      "                                                                                                 ",
+      "                                                                                                 ",
+      "                                                                                                 ",
+      "                                                                                                 ",
+      "                                                                                                 ",
+      "                                                                                                 "};
 
     // Constructor
     public Nivel(Mapa elMapa)

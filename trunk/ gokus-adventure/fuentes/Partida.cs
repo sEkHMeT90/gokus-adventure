@@ -45,6 +45,7 @@ public class Partida
   public Personaje miPersonaje;
   public Mapa miMapa;
   public Marcador miMarcador;
+  //public Marcador miMarcador;
 
   // Otros datos del juego
   int puntos;             // Puntuacion obtenida por el usuario

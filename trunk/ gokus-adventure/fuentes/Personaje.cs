@@ -96,15 +96,34 @@ public class Personaje : ElemGrafico
                                      "imagenes/Goku/paradoI6.png", "imagenes/Goku/paradoI6.png"} );
 
     CargarSecuencia( GIRANDOPALO,
-                      new string[] { "imagenes/Goku/palo1.png", "imagenes/Goku/palo1.png",
-                                     "imagenes/Goku/palo2.png", "imagenes/Goku/palo2.png",
+                      new string[] { /*"imagenes/Goku/palo1.png", "imagenes/Goku/palo1.png",
+                                     "imagenes/Goku/palo2.png", "imagenes/Goku/palo2.png",*/
                                      "imagenes/Goku/palo3.png", "imagenes/Goku/palo3.png",
                                      "imagenes/Goku/palo4.png", "imagenes/Goku/palo4.png",
                                      "imagenes/Goku/palo5.png", "imagenes/Goku/palo5.png",
                                      "imagenes/Goku/palo6.png", "imagenes/Goku/palo6.png",
                                      "imagenes/Goku/palo7.png", "imagenes/Goku/palo7.png",
                                      "imagenes/Goku/palo8.png", "imagenes/Goku/palo8.png",
-                                     "imagenes/Goku/palo2.png", "imagenes/Goku/palo2.png"} );
+                                     "imagenes/Goku/palo9.png", "imagenes/Goku/palo9.png",
+                                     "imagenes/Goku/palo10.png", "imagenes/Goku/palo10.png",
+                                     "imagenes/Goku/palo11.png", "imagenes/Goku/palo11.png",
+                                     "imagenes/Goku/palo12.png", "imagenes/Goku/palo12.png",
+                                     "imagenes/Goku/palo13.png", "imagenes/Goku/palo13.png",
+                                     "imagenes/Goku/palo14.png", "imagenes/Goku/palo14.png",
+                                     "imagenes/Goku/palo15.png", "imagenes/Goku/palo15.png",
+                                     "imagenes/Goku/palo16.png", "imagenes/Goku/palo16.png",
+                                     "imagenes/Goku/palo17.png", "imagenes/Goku/palo17.png",
+                                     "imagenes/Goku/palo18.png", "imagenes/Goku/palo18.png",
+                                     "imagenes/Goku/palo19.png", "imagenes/Goku/palo19.png",
+                                     "imagenes/Goku/palo17.png", "imagenes/Goku/palo17.png",
+                                     "imagenes/Goku/palo16.png", "imagenes/Goku/palo16.png",
+                                     "imagenes/Goku/palo15.png", "imagenes/Goku/palo15.png",
+                                     "imagenes/Goku/palo14.png", "imagenes/Goku/palo14.png",
+                                     "imagenes/Goku/palo13.png", "imagenes/Goku/palo13.png",
+                                     "imagenes/Goku/palo12.png", "imagenes/Goku/palo12.png",
+                                     "imagenes/Goku/palo11.png", "imagenes/Goku/palo11.png",
+                                     "imagenes/Goku/palo10.png", "imagenes/Goku/palo10.png",
+                                     "imagenes/Goku/palo9.png", "imagenes/Goku/palo9.png"} );
     
     direccion = ESPERANDOD;
     SetAnchoAlto( 45, 45 );
