@@ -39,6 +39,7 @@ public class Personaje : ElemGrafico
   // y preguntarle sobre enemigos, mapa, etc   
   Poder miPoder;
   short vidas;  // Vidas restantes
+  private int toques;
 
   // Necesarios para el Salto y la Caida (+ Gravedad)  
   private bool saltando, cayendo;
@@ -56,6 +57,7 @@ public class Personaje : ElemGrafico
     x = 500;         // Resto de valores iniciales
     y = 300;
     vidas = 3;
+    toques = 57;
 
     CargarSecuencia( DERECHA,
                       new string[] { "imagenes/Goku/caminandoD1.png", "imagenes/Goku/caminandoD1.png",
@@ -302,6 +304,16 @@ public class Personaje : ElemGrafico
   public int GetAlto()
   {
       return alto;
+  }
+
+  public int GetToques()
+  {
+      return toques;
+  }
+
+  public void SetToques(int valor)
+  {
+      toques = valor;
   }
 
   public void SetX(short valor)
