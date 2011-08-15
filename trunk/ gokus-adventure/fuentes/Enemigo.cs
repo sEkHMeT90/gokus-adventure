@@ -41,7 +41,7 @@ public class Enemigo : ElemGrafico
     // Funcion para mover al personaje automaticamente.
     // TODO: El movimiento es independiente del scroll
     //       para futuras versiones solucionar el problema del scroll
-    public new void Mover()
+    public override void Mover()
     {
         if (incrX != 0)
         {

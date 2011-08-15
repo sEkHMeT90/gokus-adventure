@@ -263,7 +263,7 @@ public class Partida
   // --- Pausa tras cada fotograma de juego, para velocidad de 25 fps -----
   void pausaFotograma()
   {
-    Hardware.Pausa( 25 );
+    Hardware.Pausa( 30 );
   }
 
   public void MostrarCartel(ElemGrafico cartelMostrar)

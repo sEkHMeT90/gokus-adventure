@@ -23,18 +23,8 @@ public class NivelAyuda : Nivel
         datosNivelIniciales[ 3] = "                                                                                                 ";
         datosNivelIniciales[ 4] = "                                                                                                 ";
         datosNivelIniciales[ 5] = "                                                                                                 ";
-        datosNivelIniciales[ 6] = "                                                                                                 ";
-        datosNivelIniciales[ 7] = "                                                                                                 ";
-        datosNivelIniciales[ 8] = "                                                                                                 ";
-        datosNivelIniciales[ 9] = "                                                                                                 ";
-        datosNivelIniciales[10] = "            HHHH                                                                                 ";
-        datosNivelIniciales[11] = "                                                                                                 ";
-        datosNivelIniciales[12] = "                                                                                                 ";
-        datosNivelIniciales[13] = "                                                                                                 ";
-        datosNivelIniciales[14] = "HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH";
-        datosNivelIniciales[15] = "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR";
-        datosNivelIniciales[16] = "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR";
-        datosNivelIniciales[17] = "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR";
+        datosNivelIniciales[ 6] = "HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH";
+        datosNivelIniciales[ 7] = "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR";
 
         this.Reiniciar();
     }

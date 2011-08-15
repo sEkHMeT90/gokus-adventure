@@ -18,14 +18,14 @@ public class Nivel
     // Datos del mapa de fondo 
     protected Partida miPartida;
 
-    protected int altoMapa = 18, anchoMapa = 97;
-    protected int anchoTile = 32, altoTile = 32;
-    protected int margenIzqdo = 0, margenSuperior = 30;
+    protected int altoMapa = 8, anchoMapa = 97;
+    protected int anchoTile = 38, altoTile = 67;
+    protected int margenIzqdo = 0, margenSuperior = 70;
     
     protected Mapa mapaPertenece;
 
     // Imagenes para el fondo
-    ElemGrafico muroRojo, hierba;
+    ElemGrafico dragonArriba, dragonAbajo;
 
     // Enemigos
     protected int numEnemigos;
@@ -37,25 +37,16 @@ public class Nivel
 
     string[] datosNivel; // Datos en el momento de Juego
 
-    protected string[] datosNivelIniciales = {
-    	"                                                                                                 ",
-      "                                                                                                 ",
-    	"                                                                                                 ",
-      "                                                                                                 ",
-      "                                                                                                 ",
-      "                                                                                                 ",
-      "                                                                                                 ",
-    	"                                                                                                 ",
-    	"                                                                                                 ",
-    	"                                                                                                 ",
-      "                                                                                                 ",
-      "                                                                                                 ",
-      "                                                                                                 ",
-      "                                                                                                 ",
-      "                                                                                                 ",
-      "                                                                                                 ",
-      "                                                                                                 ",
-      "                                                                                                 "};
+    protected string[] datosNivelIniciales = 
+    { 
+        "                                                                                                 ",
+        "                                                                                                 ",
+        "                                                                                                 ",
+        "                                                                                                 ",
+        "                                                                                                 ",
+        "                                                                                                 ",
+        "                                                                                                 ",
+    	"                                                                                                 "};
 
     // Constructor
     public Nivel(Mapa elMapa)
@@ -63,8 +54,8 @@ public class Nivel
         mapaPertenece = elMapa;
 
         // Casillas repetitivas para el fondo
-        muroRojo = new ElemGrafico("imagenes/Mapa/muroRojo.PNG");
-        hierba = new ElemGrafico("imagenes/Mapa/hierba.PNG");
+        dragonArriba = new ElemGrafico("imagenes/Mapa/dragonArriba.PNG");
+        dragonAbajo = new ElemGrafico("imagenes/Mapa/dragonAbajo.PNG");
 
         numEnemigos = 0;
         datosNivel = new string[altoMapa];
@@ -87,8 +78,8 @@ public class Nivel
                 int posY = i * altoTile + margenSuperior;
                 switch (datosNivel[i][j])
                 {
-                    case 'R': muroRojo.DibujarOculta(posX + valor, posY); break;
-                    case 'H': hierba.DibujarOculta(posX + valor, posY); break;
+                    case 'H': dragonArriba.DibujarOculta(posX + valor, posY); break;
+                    case 'R': dragonAbajo.DibujarOculta(posX + valor, posY); break;
                 }
             }
     }
@@ -104,37 +95,37 @@ public class Nivel
         // Primera esquina: (x,y)
         int xMapa = (x - margenIzqdo - scroll) / anchoTile;
         int yMapa = (y - margenSuperior) / altoTile;
-        if (datosNivel[yMapa][xMapa] == 'H')
+        if (datosNivel[yMapa][xMapa] == 'R')
             return false;
 
         // Segunda esquina: (x+ancho,y)
         xMapa = (x + ancho - margenIzqdo - scroll) / anchoTile;
         yMapa = (y - margenSuperior) / altoTile;
-        if (datosNivel[yMapa][xMapa] == 'H')
+        if (datosNivel[yMapa][xMapa] == 'R')
             return false;
 
         // Tercera esquina: (x,y+alto)
         xMapa = (x - margenIzqdo - scroll) / anchoTile;
         yMapa = (y + alto - margenSuperior) / altoTile;
-        if (datosNivel[yMapa][xMapa] == 'H')
+        if (datosNivel[yMapa][xMapa] == 'R')
             return false;
 
         // Cuarta esquina: (x+ancho,y+alto)
         xMapa = (x + ancho - margenIzqdo - scroll) / anchoTile;
         yMapa = (y + alto - margenSuperior) / altoTile;
-        if (datosNivel[yMapa][xMapa] == 'H')
+        if (datosNivel[yMapa][xMapa] == 'R')
             return false;
 
         // Punto intermedio: (x, y+(alto/2))
         xMapa = (x - margenIzqdo - scroll) / anchoTile;
         yMapa = (y + (alto / 2) - margenSuperior) / altoTile;
-        if (datosNivel[yMapa][xMapa] == 'H')
+        if (datosNivel[yMapa][xMapa] == 'R')
             return false;
 
         // Punto intermedio:  (x+ancho, y+(algo/2))
         xMapa = (x + ancho - margenIzqdo - scroll) / anchoTile;
         yMapa = (y + (alto / 2) - margenSuperior) / altoTile;
-        if (datosNivel[yMapa][xMapa] == 'H')
+        if (datosNivel[yMapa][xMapa] == 'R')
             return false;
 
         return true;
@@ -146,14 +137,14 @@ public class Nivel
         int xMapa = (x - margenIzqdo - scroll) / anchoTile;
         int yMapa = (y + alto - margenSuperior) / altoTile;
 
-        if (datosNivel[yMapa][xMapa] == 'H')
+        if (datosNivel[yMapa][xMapa] == 'R')
             return false;
 
         // Pie Derecho: (x+ancho,y+alto)
         xMapa = (x + ancho - margenIzqdo - scroll) / anchoTile;
         yMapa = (y + alto - margenSuperior) / altoTile;
 
-        if (datosNivel[yMapa][xMapa] == 'H')
+        if (datosNivel[yMapa][xMapa] == 'R')
             return false;
 
         return true;

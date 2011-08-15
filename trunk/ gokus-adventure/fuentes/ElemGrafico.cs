@@ -220,7 +220,7 @@ public class ElemGrafico
       fotogramaActual = 0;
   }
 
-  public void Mover()
+  public virtual void Mover()
   {
     // Para ser redefinido en las clases "hijas"
   }
@@ -316,7 +316,7 @@ public class ElemGrafico
     {
       incrXOriginal = (short)vX;
       incrYOriginal = (short)vY;
-    }
+    }     
   }
 
 } /* end class ElemGrafico */

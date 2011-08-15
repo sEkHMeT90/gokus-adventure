@@ -26,18 +26,8 @@ public class Nivel01 : Nivel
         datosNivelIniciales[ 3] = "                                                                                                 ";
         datosNivelIniciales[ 4] = "                                                                                                 ";
         datosNivelIniciales[ 5] = "                                                                                                 ";
-        datosNivelIniciales[ 6] = "                                                                                                 ";
-        datosNivelIniciales[ 7] = "                                                                                                 ";
-        datosNivelIniciales[ 8] = "                                                                                                 ";
-        datosNivelIniciales[ 9] = "                                                                                                 ";
-        datosNivelIniciales[10] = "                                                                                                 ";
-        datosNivelIniciales[11] = "                                                                                                 ";
-        datosNivelIniciales[12] = "                                                                                                 ";
-        datosNivelIniciales[13] = "                                                                                                 ";
-        datosNivelIniciales[14] = "HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH";
-        datosNivelIniciales[15] = "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR";
-        datosNivelIniciales[16] = "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR";
-        datosNivelIniciales[17] = "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR";
+        datosNivelIniciales[ 6] = "HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH";
+        datosNivelIniciales[ 7] = "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR";
 
         this.Reiniciar();
 
@@ -53,12 +43,11 @@ public class Nivel01 : Nivel
     public void CrearEnemigos()
     {
         numEnemigos = 1;        
-        listaEnemigos = new EnemigoPterodactyl[numEnemigos];
+        listaEnemigos = new Enemigo[numEnemigos];
 
         listaEnemigos[ 0 ] = new EnemigoPterodactyl( 630 , 360 , 2);
         listaEnemigos[ 0 ].setMinMaxX( 425, 700 );
         listaEnemigos[ 0 ].CambiarDireccion( ElemGrafico.DERECHA );
-
     }
 
     public void CrearCarteles()
@@ -66,8 +55,8 @@ public class Nivel01 : Nivel
         numCarteles = 2;
         listaCarteles = new CartelAyuda[numCarteles];
 
-        listaCarteles[0] = new CartelAyuda(200, 450, "imagenes/CartelesAyuda/CartelPrueba.PNG", this);
-        listaCarteles[1] = new CartelAyuda(600, 450, "imagenes/CartelesAyuda/CartelPrueba2.PNG", this);
+        listaCarteles[0] = new CartelAyuda(200, 500, "imagenes/CartelesAyuda/CartelPrueba.PNG", this);
+        listaCarteles[1] = new CartelAyuda(600, 500, "imagenes/CartelesAyuda/CartelPrueba2.PNG", this);
     }
 
 } /* fin de la clase Nivel01 */
