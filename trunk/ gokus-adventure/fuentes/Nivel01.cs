@@ -37,6 +37,7 @@ public class Nivel01 : Nivel
     {
         CrearEnemigos();
         CrearCarteles();
+        CrearObjetos();
         base.Reiniciar();
     }
 
@@ -57,6 +58,16 @@ public class Nivel01 : Nivel
 
         listaCarteles[0] = new CartelAyuda(200, 500, "imagenes/CartelesAyuda/CartelPrueba.PNG", this);
         listaCarteles[1] = new CartelAyuda(600, 500, "imagenes/CartelesAyuda/CartelPrueba2.PNG", this);
+    }
+
+    public void CrearObjetos()
+    {
+        numObjetos = 3;
+        listaObjetos = new ObjetoRecogible[numObjetos];
+
+        listaObjetos[0] = new Moneda(100, 450);
+        listaObjetos[1] = new Moneda(150, 450);
+        listaObjetos[2] = new Moneda(200, 450);
     }
 
 } /* fin de la clase Nivel01 */

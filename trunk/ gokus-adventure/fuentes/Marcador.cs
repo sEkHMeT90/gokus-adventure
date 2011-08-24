@@ -9,12 +9,15 @@
                        barra de salud.                       
  ---------------------------------------------------- */
 
+using System;
+
 public class Marcador
 {
     private int puntuacion;
     private int vidas;
     private int salud;
 
+    private Fuente fuentedball42;
     private Partida miPartida;
     private ElemGrafico vidaGoku, barraVida;
 
@@ -24,6 +27,7 @@ public class Marcador
 
         vidaGoku = new ElemGrafico(@"imagenes\Marcador\vidaGoku.png");
         barraVida = new ElemGrafico(@"imagenes\Marcador\barraVida.png");
+        fuentedball42 = new Fuente("FreeSansBold.ttf", 42);
     }
 
     public void SetVidas(int valor)
@@ -64,13 +68,15 @@ public class Marcador
     public void DibujarOculta()
     {
         // Imagen vidas
-        vidaGoku.DibujarOculta(-10, -10);
+        vidaGoku.DibujarOculta(-10, -20);
         
         // SALUD DEL PERSONAJE      
         for (int index = 0; index < salud; index++)
         {
-            barraVida.DibujarOculta(91 + (2 * index), 40);
+            barraVida.DibujarOculta(91 + (2 * index), 30);
         }
-        
+
+        // Puntos
+        Hardware.EscribirTextoOculta(Convert.ToString(puntuacion), 400, 15, 0xFF, 0x99, 0x00, fuentedball42);        
     }
 } /* end class Marcador */

@@ -131,7 +131,7 @@ public class Mapa
         return nivelActual.GetEnemigo(i);
     }
 
-    // Para extraer los carteler del Nivel
+    // Para extraer los carteles del Nivel
     public int GetNumCarteles()
     {
         return nivelActual.GetNumCarteles();
@@ -140,6 +140,17 @@ public class Mapa
     public CartelAyuda GetCartel(int i)
     {
         return nivelActual.GetCartel(i);
+    }
+
+    // Para extraer los Objetos del Nivel
+    public int GetNumObjetos()
+    {
+        return nivelActual.GetNumObjetos();
+    }
+
+    public ObjetoRecogible GetObjeto(int i)
+    {
+        return nivelActual.GetObjeto(i);
     }
 
     // Necesario para la muestra de carteles
