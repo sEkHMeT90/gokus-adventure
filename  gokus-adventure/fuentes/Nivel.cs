@@ -35,6 +35,10 @@ public class Nivel
     protected int numCarteles;
     protected CartelAyuda[] listaCarteles;
 
+    // Objetos Recogibles
+    protected int numObjetos;
+    protected ObjetoRecogible[] listaObjetos;
+
     string[] datosNivel; // Datos en el momento de Juego
 
     protected string[] datosNivelIniciales = 
@@ -213,6 +217,20 @@ public class Nivel
     {
         if (numCarteles > i)
             return listaCarteles[i];
+
+        return null;
+    }
+
+    // Para los Objetos Recogibles
+    public int GetNumObjetos()
+    {
+        return numObjetos;
+    }
+
+    public ObjetoRecogible GetObjeto(int i)
+    {
+        if (numObjetos > i)
+            return listaObjetos[i];
 
         return null;
     }

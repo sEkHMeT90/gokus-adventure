@@ -68,6 +68,8 @@
     <Compile Include="..\fuentes\NivelAyuda.cs" />
 	<Compile Include="..\fuentes\Marcador.cs" />
     <Compile Include="..\fuentes\EnemigoPterodactyl.cs" />
+	<Compile Include="..\fuentes\ObjetoRecogible.cs" />
+	<Compile Include="..\fuentes\Moneda.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

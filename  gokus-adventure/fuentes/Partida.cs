@@ -39,6 +39,8 @@
                        Reinicio de la partida si salimos con ESC.
  ---------------------------------------------------- */
 
+using System;
+
 public class Partida
 {
   // Componentes del juego
@@ -54,8 +56,8 @@ public class Partida
   // Necesarias para el Scroll
   int scrollHorizontal = 0;
   int incrX = 4;
-  int DERECHA = -4;
-  int IZQUIERDA = 4;
+  int DERECHA = -6;
+  int IZQUIERDA = 6;
 
   // Necesarias para la muestra de carteles
   ElemGrafico cartelMostrado;
@@ -191,6 +193,10 @@ public class Partida
       // Enemigos
       for (int i = 0; i < miMapa.GetNumEnemigos(); i++)
           miMapa.GetEnemigo(i).Mover();
+
+      // Objetos
+      for (int i = 0; i < miMapa.GetNumObjetos(); i++)
+          miMapa.GetObjeto(i).Animar();
   }
 
   // --- Movimiento de todos los elementos al hacer uso del Scroll ---
@@ -206,6 +212,10 @@ public class Partida
     // Carteles de Ayuda
     for (int i = 0; i < miMapa.GetNumCarteles(); i++)
         miMapa.GetCartel(i).MoverScroll(valor);
+
+    // Objetos
+    for (int i = 0; i < miMapa.GetNumObjetos(); i++)
+        miMapa.GetObjeto(i).MoverScroll((short)valor);
 
     // Personaje
     miPersonaje.MoverScroll(valor);
@@ -223,6 +233,21 @@ public class Partida
       for (int i = 0; i < miMapa.GetNumEnemigos(); i++)
           if (miPersonaje.ColisionCon(miMapa.GetEnemigo(i)))
               miPersonaje.SetToques(miPersonaje.GetToques() - 1);
+
+      // Recoger Objetos
+      for (int i = 0; i < miMapa.GetNumObjetos(); i++)
+      {
+          if (miPersonaje.ColisionCon(miMapa.GetObjeto(i)))
+          {
+              switch (Convert.ToString(miMapa.GetObjeto(i).GetType()))
+              {
+                  case "Moneda":
+                      puntos += 10;
+                      break;
+              }
+              miMapa.GetObjeto(i).Desaparecer();
+          }
+      }
   }
 
 
@@ -246,9 +271,13 @@ public class Partida
     for (int i = 0; i < miMapa.GetNumCarteles(); i++)
         miMapa.GetCartel(i).DibujarOculta();
 
+    // Dibujo los Objetos
+    for (int i = 0; i < miMapa.GetNumObjetos(); i++)
+        miMapa.GetObjeto(i).DibujarOculta();
+
     // Marcador
 
-    // miMarcador.SetPuntuacion(puntos);
+    miMarcador.SetPuntuacion(puntos);
     // miMarcador.SetVidas(miPersonaje.GetVidas());
     miMarcador.SetToques(miPersonaje.GetToques());
     miMarcador.DibujarOculta();
